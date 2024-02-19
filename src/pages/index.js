@@ -1,5 +1,7 @@
 import Head from "next/head";
-import Navigation from "../../components/Navigation/Navigation";
+import Header from "../../components/Header/Header.js";
+import TourSearch from "../../components/TourSearch/TourSearch";
+import PopularDestination from "../../components/PopularDestinations/PopularDestinations.js";
 
 export default function Home() {
   return (
@@ -10,7 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Navigation></Navigation>
+        <Header />
+        <TourSearch />
+        <PopularDestination />
       </main>
     </>
   );
