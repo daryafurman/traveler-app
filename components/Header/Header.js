@@ -1,6 +1,7 @@
 import Navigation from "../Navigation/Navigation.js";
 import styled from "styled-components";
 import Image from "next/image.js";
+import { useRouter } from "next/router";
 
 const HeaderContainer = styled.div`
   height: 100px;
@@ -37,15 +38,19 @@ const Button = styled.button`
   padding-right: 30px;
 `;
 export default function Header() {
+  const router = useRouter();
+  const redirectToGoogleAuth = () => {
+    router.push("/api/auth/route");
+  };
   return (
     <HeaderContainer>
       <Logo>Traveler</Logo>
       <Navigation />
-      <Button>
+      <Button onClick={redirectToGoogleAuth}>
         <Image
           src="/account.svg"
-          width={35}
-          height={35}
+          width={32}
+          height={32}
           alt="account-icon"
         ></Image>
       </Button>
