@@ -1,6 +1,7 @@
 /* Importing Google Font in a CSS file */
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,600;1,600&family=Italiana&display=swap");
+
 root {
   --dark-aqua: #3c6e71;
   --green-mantis: #70ae6e;

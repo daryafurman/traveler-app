@@ -11,11 +11,11 @@ const List = styled.ul`
   display: flex;
   justify-content: center;
   list-style-type: none;
-  gap: 2.8rem;
+  gap: 1.3rem;
   font-size: 20px;
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
 `;
 
@@ -35,7 +35,7 @@ const Navigation = () => {
       <nav>
         <List role="list">
           <li>
-            <NavLink $isActive={true} href="/Home" passHref>
+            <NavLink href="/Home" passHref>
               Home
             </NavLink>
           </li>
