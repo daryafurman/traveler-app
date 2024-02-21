@@ -47,8 +47,8 @@ const Button = styled.button`
 const SearchForm = styled.form`
   padding: 20px;
   width: auto;
-  max-width: 650px;
-  margin: 240px auto;
+  max-width: 250px;
+  margin: 100px auto;
   color: #beee62;
   font-size: 26px;
   background: rgba(255, 255, 255, 0.03);
@@ -74,7 +74,7 @@ const Row = styled.div`
 
   input,
   select {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 8px;
@@ -93,7 +93,7 @@ export default function TourSearch() {
         </Slogan>
         <SearchForm>
           <Row>
-            <label>Destination:</label>
+            <label>Choose your destination</label>
             <select>
               <option>Country</option>
             </select>
@@ -102,7 +102,7 @@ export default function TourSearch() {
             </select>
           </Row>
 
-          <Row>
+          {/* <Row>
             <label>Check In</label>
             <input type="date"></input>
           </Row>
@@ -110,7 +110,7 @@ export default function TourSearch() {
           <Row>
             <label>Check Out</label>
             <input type="date"></input>
-          </Row>
+          </Row> */}
           <Button>Search</Button>
         </SearchForm>
       </SearchSection>

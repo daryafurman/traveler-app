@@ -36,19 +36,35 @@ const Button = styled.button`
   justify-content: center;
   padding-right: 30px;
 `;
+
+const AccountsButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export default function Header() {
   return (
     <HeaderContainer>
       <Logo>Traveler</Logo>
       <Navigation />
-      <Button>
-        <Image
-          src="/account.svg"
-          width={35}
-          height={35}
-          alt="account-icon"
-        ></Image>
-      </Button>
+      <AccountsButtonContainer>
+        <Button>
+          <Image
+            src="/account.svg"
+            width={35}
+            height={35}
+            alt="account-icon"
+          ></Image>
+        </Button>
+        <Button>
+          <Image
+            src="/add-account.svg"
+            width={35}
+            height={35}
+            alt="account-icon"
+          ></Image>
+        </Button>
+      </AccountsButtonContainer>
     </HeaderContainer>
   );
 }

@@ -1,21 +1,48 @@
 import Head from "next/head";
+import useSWR from "swr";
 import Header from "../../components/Header/Header.js";
 import TourSearch from "../../components/TourSearch/TourSearch";
 import PopularDestination from "../../components/PopularDestinations/PopularDestinations.js";
+import Tours from "../../components/Tours/Tours.js";
+import styled from "styled-components";
+
+const List = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 0;
+`;
+
+const ListItem = styled.li`
+  position: relative;
+  width: 100%;
+`;
 
 export default function Home() {
+  const { data } = useSWR("/api/tours", { fallbackData: [] });
   return (
     <>
       <Head>
         <title>Traveler</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/traveler.svg" />
       </Head>
-      <main>
-        <Header />
-        <TourSearch />
-        <PopularDestination />
-      </main>
+      <Header />
+      <TourSearch />
+      <List role="list">
+        {data.map((tour) => (
+          <ListItem key={tour._id}>
+            <Tours
+              image={tour.photos}
+              country={tour.country}
+              city={tour.city}
+              price={tour.price}
+            />
+          </ListItem>
+        ))}
+      </List>
+      <PopularDestination />
     </>
   );
 }
