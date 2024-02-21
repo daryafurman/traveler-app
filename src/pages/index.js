@@ -9,10 +9,6 @@ import styled from "styled-components";
 const List = styled.ul`
   list-style: none;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  padding-left: 0;
 `;
 
 const ListItem = styled.li`
@@ -34,7 +30,7 @@ export default function Home() {
         {data.map((tour) => (
           <ListItem key={tour._id}>
             <Tours
-              image={tour.photos}
+              image={tour.photos[0]}
               country={tour.country}
               city={tour.city}
               price={tour.price}
