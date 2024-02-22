@@ -1,19 +1,16 @@
 import dbConnect from "../../../../db/connection.js";
 import Tour from "../../../../db/schemas/tour.js";
 
-export default async function handler(request, response) {
+export default async function handler(req, res) {
   await dbConnect();
 
-  if (request.method === "GET") {
-    try {
-      const tours = await Tour.find();
+  const { country, city } = req.query;
 
-      return response.status(200).json(tours);
-    } catch (error) {
-      response.status(500).json({ error: error.message });
-    }
-  } else {
-    response.setHeader("Allow", ["GET"]);
-    response.status(405).json({ message: "Method not allowed" });
-  }
+  let query = {};
+  if (country) query.country = country;
+  if (city) query.city = city;
+
+  const tours = await Tour.find(query);
+
+  res.status(200).json(tours);
 }

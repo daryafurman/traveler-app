@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const { Schema, model } = mongoose;
+const { Schema } = mongoose;
 
 const tourSchema = new Schema({
   country: { type: String, required: true },
@@ -11,6 +11,8 @@ const tourSchema = new Schema({
   price: { type: Number, required: true },
 });
 
-const Tour = model("Tour", tourSchema);
+tourSchema.index({ country: 1, city: 1 });
+
+const Tour = mongoose.models.Tour || mongoose.model("Tour", tourSchema);
 
 export default Tour;

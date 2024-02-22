@@ -1,44 +1,85 @@
-import Head from "next/head";
-import useSWR from "swr";
 import Header from "../../components/Header/Header.js";
 import TourSearch from "../../components/TourSearch/TourSearch";
-import PopularDestination from "../../components/PopularDestinations/PopularDestinations.js";
-import Tours from "../../components/Tours/Tours.js";
+import React, { useState } from "react";
+import useSWR from "swr";
 import styled from "styled-components";
+import Tours from "../../components/Tours/Tours.js";
+import Image from "next/image.js";
 
-const List = styled.ul`
-  list-style: none;
-  display: flex;
-`;
-
-const ListItem = styled.li`
+const SliderContainer = styled.div`
+  overflow: hidden;
   position: relative;
   width: 100%;
 `;
 
+const SlidesWrapper = styled.div`
+  display: flex;
+  transition: transform 0.5s ease-out;
+  width: 100%;
+`;
+
+const OneTour = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4743b;
+`;
+
 export default function Home() {
-  const { data } = useSWR("/api/tours", { fallbackData: [] });
+  const { data: tours } = useSWR("/api/tours", { fallbackData: [] });
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % tours.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + tours.length) % tours.length);
+  };
+
+  const slideWidth = 100;
+  const slideMovement = -(currentSlide * slideWidth);
+
   return (
     <>
-      <Head>
-        <title>Traveler</title>
-        <link rel="icon" href="/traveler.svg" />
-      </Head>
       <Header />
       <TourSearch />
-      <List role="list">
-        {data.map((tour) => (
-          <ListItem key={tour._id}>
-            <Tours
-              image={tour.photos[0]}
-              country={tour.country}
-              city={tour.city}
-              price={tour.price}
-            />
-          </ListItem>
-        ))}
-      </List>
-      <PopularDestination />
+      <OneTour>
+        <Image
+          onClick={prevSlide}
+          src="/chevron_left.svg"
+          width={35}
+          height={35}
+          alt="prev"
+        />
+        <SliderContainer>
+          <SlidesWrapper style={{ transform: `translateX(${slideMovement}%)` }}>
+            {tours.map((tour, index) => (
+              <div key={tour._id} style={{ width: "100%", flex: "0 0 100%" }}>
+                <Tours
+                  id={tour._id}
+                  image={tour.photos[0]}
+                  country={tour.country}
+                  city={tour.city}
+                  price={tour.price}
+                  description={tour.description}
+                  duration={tour.duration}
+                  onClick={(id) =>
+                    console.log(`Navigating to tour with ID: ${id}`)
+                  }
+                />
+              </div>
+            ))}
+          </SlidesWrapper>
+        </SliderContainer>
+        <Image
+          onClick={nextSlide}
+          src="/navigate_next.svg"
+          width={35}
+          height={35}
+          alt="next"
+        />
+      </OneTour>
     </>
   );
 }

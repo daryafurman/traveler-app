@@ -1,19 +1,19 @@
-import dbConnect from "../../../../db/connection.js";
-import Tour from "../../../../../db/schemas/tour.js";
+import dbConnect from "../../../../../db/connection";
+import Tour from "../../../../../db/schemas/tour";
 
 export default async function handler(request, response) {
   const { id } = request.query;
+  console.log(id);
   if (!id) {
     return;
   }
   await dbConnect();
 
   if (request.method === "GET") {
-    const tour = Tour.find((tour) => tour._id.$oid === id);
+    const foundTour = await Tour.findById(id);
 
-    if (!tour) {
-      return response.status(404).json({ status: "Not found" });
-    }
-    return response.status(200).json(tour);
+    return response.status(200).json({ tour: foundTour });
+  } else {
+    return response.status(200).json({ tour: foundTour });
   }
 }

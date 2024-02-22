@@ -1,7 +1,7 @@
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import styled from "styled-components";
-import { StyledImage } from "../../../components/StyledImage.js";
+import Image from "next/image";
 
 const Article = styled.article`
   padding: 20px;
@@ -25,13 +25,17 @@ export default function DetailsPage() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
-  const { data: tour, isLoading, error } = useSWR(`/api/tours/${id}`);
+  const {
+    data: tour,
+    isLoading,
+    error,
+  } = useSWR(id ? `/api/tours/${id}` : null);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   return (
     <Article>
       <ImagesContainer>
-        <StyledImage
+        <Image
           src={tour.photos}
           priority
           fill

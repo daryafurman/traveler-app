@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 
 const SearchSection = styled.div`
   background-image: url("/main.jpg");
@@ -84,6 +85,23 @@ const Row = styled.div`
 `;
 
 export default function TourSearch() {
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [locations, setLocations] = useState({ countries: [], cities: [] });
+
+  useEffect(() => {
+    fetch("/api/locations")
+      .then((res) => res.json())
+      .then((data) => {
+        setLocations(data);
+      });
+  }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    window.location.href = `/search-results?country=${country}&city=${city}`;
+  };
+
   return (
     <>
       <SearchSection>
@@ -91,27 +109,30 @@ export default function TourSearch() {
           Embark on a journey
           <br /> of a lifetime
         </Slogan>
-        <SearchForm>
+        <SearchForm onSubmit={handleSearch}>
           <Row>
             <label>Choose your destination</label>
-            <select>
-              <option>Country</option>
+            <select
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            >
+              <option value="">Country</option>
+              {locations.countries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
             </select>
-            <select>
-              <option>City</option>
+            <select value={city} onChange={(e) => setCity(e.target.value)}>
+              <option value="">City</option>
+              {locations.cities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
             </select>
           </Row>
-
-          {/* <Row>
-            <label>Check In</label>
-            <input type="date"></input>
-          </Row>
-
-          <Row>
-            <label>Check Out</label>
-            <input type="date"></input>
-          </Row> */}
-          <Button>Search</Button>
+          <Button type="submit">Search</Button>
         </SearchForm>
       </SearchSection>
     </>

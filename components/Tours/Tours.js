@@ -1,69 +1,81 @@
 import styled from "styled-components";
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
 
-const SliderContainer = styled.div`
+const ContainerTitle = styled.h1`
   font-family: "Italiana", sans-serif;
   font-weight: 600;
   font-style: normal;
-  height: 700px;
-  background-color: #f4743b;
-  position: relative;
-  overflow: hidden;
-`;
-
-const Slide = styled.div`
-  display: flex;
-  flex-direction: column; /* Adjust as needed for your layout */
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transition: transform 1s ease-in-out;
-  transform: translateX(${(props) => (props.active ? "0" : "100%")});
+  text-align: center;
+  color: #fff;
 `;
 
 const TextContainer = styled.div`
-  color: white;
-  text-align: center;
-`;
-
-const Button = styled.button`
-  align-self: center;
-  gap: 10px;
-  width: 100px;
-  padding: 10px;
-  border-radius: 60px;
-  background-color: #70ae6e;
-  color: #beee62;
-  border: none;
-  letter-spacing: 0.4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
+  padding: 30px;
+  width: 500px;
+  max-width: 400px;
+  margin: 40px auto;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16.4px);
+  -webkit-backdrop-filter: blur(16.4px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
-export default function Tours({ image, country, city, price }) {
+const Slider = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 66vh;
+`;
+
+const ImageWrapper = styled.div`
+  width: 800px;
+  height: auto;
+  margin: 40px auto;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16.4px);
+  -webkit-backdrop-filter: blur(16.4px);
+`;
+
+const ImageContainer = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
+`;
+
+export default function Tours({
+  image,
+  country,
+  city,
+  price,
+  description,
+  duration,
+}) {
   return (
-    <SliderContainer>
-      {slidesData.map((slide, index) => (
-        <Slide
-          key={slide.id}
-          active={index === currentSlide}
-          bgColor={slide.bgColor}
-        >
-          <Image src={slide.image} width={300} height={200} alt={slide.title} />
-          <TextContainer>
-            <h2>{slide.title}</h2>
-            <p>{slide.description}</p>
-            <Button>See details</Button>
-          </TextContainer>
-        </Slide>
-      ))}
-    </SliderContainer>
+    <div>
+      <ContainerTitle>Popular Tours:</ContainerTitle>
+      <Slider>
+        <TextContainer>
+          <h2>
+            {city}, {country}
+          </h2>
+          <p>{description} </p>
+          <p>Duration: {duration} </p>
+          <p>Price: {price} $</p>
+        </TextContainer>
+        <ImageWrapper>
+          <ImageContainer src={image} alt={`${city}, ${country}`} />
+        </ImageWrapper>
+      </Slider>
+    </div>
   );
 }
