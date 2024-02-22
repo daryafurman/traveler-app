@@ -3,10 +3,11 @@ import useSWR from "swr";
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import SearchResults from "../../components/SearchResult/SearchResult";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function SearchResults() {
+export default function ShowSearchResults() {
   const router = useRouter();
   const { country, city } = router.query;
 
@@ -24,7 +25,7 @@ export default function SearchResults() {
     return <div>No tours found for the selected destination.</div>;
 
   return (
-    <div>
+    <SearchResults>
       <h2>Search Results</h2>
       {tours?.map((tour) => (
         <div key={tour._id}>
@@ -32,7 +33,7 @@ export default function SearchResults() {
             {tour.country}, {tour.city}
           </h3>
           <Image
-            src={tour.image}
+            src={tour.photo}
             alt={`${city}, ${country}`}
             width={500}
             height={300}
@@ -40,6 +41,6 @@ export default function SearchResults() {
           <p>{tour.price} $</p>
         </div>
       ))}
-    </div>
+    </SearchResults>
   );
 }

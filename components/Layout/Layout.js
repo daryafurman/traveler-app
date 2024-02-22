@@ -1,14 +1,8 @@
 import styled from "styled-components";
 import Head from "next/head.js";
+import Header from "../Header/Header";
 
-const Main = styled.main`
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 5rem;
-  padding: 0.5rem;
-  position: relative;
-  width: 700px;
-`;
+const Main = styled.main``;
 
 export default function Layout({ children }) {
   return (
@@ -17,7 +11,8 @@ export default function Layout({ children }) {
         <title>Traveler</title>
         <link rel="icon" href="/traveler.svg" />
       </Head>
-      <main>{children}</main>
+      <Header></Header>
+      <Main>{children}</Main>
     </>
   );
 }
