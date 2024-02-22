@@ -14,26 +14,6 @@ const SearchContainer = styled.div`
   justify-content: center;
 `;
 
-const Results = styled.div`
-  font-family: "Figtree", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  padding: 30px;
-  width: 500px;
-  max-width: 400px;
-  margin: 40px auto;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(16.4px);
-  -webkit-backdrop-filter: blur(16.4px);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
 export default function SearchResults({ image, country, city, price }) {
   return (
     <SearchContainer>
