@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 
 const SearchSection = styled.div`
   background-image: url("/main.jpg");
@@ -47,8 +48,8 @@ const Button = styled.button`
 const SearchForm = styled.form`
   padding: 20px;
   width: auto;
-  max-width: 650px;
-  margin: 240px auto;
+  max-width: 250px;
+  margin: 100px auto;
   color: #beee62;
   font-size: 26px;
   background: rgba(255, 255, 255, 0.03);
@@ -74,7 +75,7 @@ const Row = styled.div`
 
   input,
   select {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 8px;
@@ -84,6 +85,31 @@ const Row = styled.div`
 `;
 
 export default function TourSearch() {
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [locations, setLocations] = useState({ countries: [], cities: [] });
+
+  useEffect(() => {
+    fetch("/api/locations")
+      .then((res) => res.json())
+      .then((data) => {
+        const { countries, cities } = data;
+        if (Array.isArray(countries) && Array.isArray(cities)) {
+          setLocations({ countries, cities });
+        } else {
+          console.error("Unexpected data structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to fetch locations:", error);
+      });
+  }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    window.location.href = `/search-results?country=${country}&city=${city}`;
+  };
+
   return (
     <>
       <SearchSection>
@@ -91,27 +117,32 @@ export default function TourSearch() {
           Embark on a journey
           <br /> of a lifetime
         </Slogan>
-        <SearchForm>
+        <SearchForm onSubmit={handleSearch}>
           <Row>
-            <label>Destination:</label>
-            <select>
-              <option>Country</option>
+            <label>Choose your destination</label>
+            <select
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            >
+              <option value="">Country</option>
+              {locations.countries &&
+                locations.countries.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
+                  </option>
+                ))}
             </select>
-            <select>
-              <option>City</option>
+            <select value={city} onChange={(e) => setCity(e.target.value)}>
+              <option value="">City</option>
+              {locations.cities &&
+                locations.cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
             </select>
           </Row>
-
-          <Row>
-            <label>Check In</label>
-            <input type="date"></input>
-          </Row>
-
-          <Row>
-            <label>Check Out</label>
-            <input type="date"></input>
-          </Row>
-          <Button>Search</Button>
+          <Button type="submit">Search</Button>
         </SearchForm>
       </SearchSection>
     </>
