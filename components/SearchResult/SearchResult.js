@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ImageSlider from "./ImageSlider";
+import { useRouter } from "next/router";
 
 const SearchContainer = styled.div`
   color: #fff;
@@ -37,6 +38,7 @@ const List = styled.ul`
 `;
 
 export default function SearchResults({
+  id,
   photos,
   country,
   city,
@@ -44,6 +46,11 @@ export default function SearchResults({
   description,
   price,
 }) {
+  const router = useRouter();
+
+  const handleSeeDetailsClick = () => {
+    router.push(`/tours/${id}`);
+  };
   return (
     <SearchContainer>
       <h3>
@@ -56,7 +63,7 @@ export default function SearchResults({
         <li>Duration: {duration} </li>
         <li>Price: {price} $</li>
       </List>
-      <Button>See details</Button>
+      <Button onClick={handleSeeDetailsClick}>See details</Button>
     </SearchContainer>
   );
 }

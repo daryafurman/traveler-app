@@ -11,9 +11,11 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     const foundTour = await Tour.findById(id);
-
+    if (!foundTour) {
+      return response.status(404).json({ message: "Tour not found" });
+    }
     return response.status(200).json({ tour: foundTour });
   } else {
-    return response.status(200).json({ tour: foundTour });
+    return response.status(405).json({ message: "Method not allowed" });
   }
 }

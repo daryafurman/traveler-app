@@ -40,6 +40,7 @@ export default function ShowSearchResults() {
       {tours?.map((tour) => (
         <SearchResults
           key={tour.id}
+          id={tour._id}
           photos={tour.photos}
           country={tour.country}
           city={tour.city}
