@@ -33,7 +33,7 @@ const Slider = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
-  height: 66vh;
+  height: 77vh;
 `;
 
 const ImageWrapper = styled.div`

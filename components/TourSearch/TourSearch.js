@@ -93,7 +93,15 @@ export default function TourSearch() {
     fetch("/api/locations")
       .then((res) => res.json())
       .then((data) => {
-        setLocations(data);
+        const { countries, cities } = data;
+        if (Array.isArray(countries) && Array.isArray(cities)) {
+          setLocations({ countries, cities });
+        } else {
+          console.error("Unexpected data structure:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to fetch locations:", error);
       });
   }, []);
 
@@ -117,19 +125,21 @@ export default function TourSearch() {
               onChange={(e) => setCountry(e.target.value)}
             >
               <option value="">Country</option>
-              {locations.countries.map((country) => (
-                <option key={country} value={country}>
-                  {country}
-                </option>
-              ))}
+              {locations.countries &&
+                locations.countries.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
+                  </option>
+                ))}
             </select>
             <select value={city} onChange={(e) => setCity(e.target.value)}>
               <option value="">City</option>
-              {locations.cities.map((city) => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
-              ))}
+              {locations.cities &&
+                locations.cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
             </select>
           </Row>
           <Button type="submit">Search</Button>

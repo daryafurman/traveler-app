@@ -1,9 +1,18 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import React from "react";
-import styled from "styled-components";
-import Image from "next/image";
 import SearchResults from "../../components/SearchResult/SearchResult";
+import styled from "styled-components";
+
+const Main = styled.div`
+  background-color: #3c6e71;
+  height: 100vh;
+  margin-top: 100px;
+  font-family: "Figtree", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+`;
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -25,22 +34,20 @@ export default function ShowSearchResults() {
     return <div>No tours found for the selected destination.</div>;
 
   return (
-    <SearchResults>
-      <h2>Search Results</h2>
+    <Main>
+      <h2 style={{ color: "#fff" }}>
+        All the tours that we have available to {country}, {city}:
+      </h2>
       {tours?.map((tour) => (
-        <div key={tour._id}>
-          <h3>
-            {tour.country}, {tour.city}
-          </h3>
-          <Image
-            src={tour.photo}
-            alt={`${city}, ${country}`}
-            width={500}
-            height={300}
-          />
-          <p>{tour.price} $</p>
-        </div>
+        <SearchResults
+          key={tour.id}
+          photos={tour.photos}
+          country={tour.country}
+          city={tour.city}
+          duration={tour.duration}
+          price={tour.price}
+        />
       ))}
-    </SearchResults>
+    </Main>
   );
 }
