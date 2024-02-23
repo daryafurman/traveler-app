@@ -6,7 +6,6 @@ import styled from "styled-components";
 
 const Main = styled.div`
   background-color: #3c6e71;
-  height: 100vh;
   margin-top: 100px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
@@ -44,6 +43,7 @@ export default function ShowSearchResults() {
           photos={tour.photos}
           country={tour.country}
           city={tour.city}
+          description={tour.description}
           duration={tour.duration}
           price={tour.price}
         />

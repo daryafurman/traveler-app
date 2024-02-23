@@ -1,26 +1,16 @@
-import Image from "next/image";
 import styled from "styled-components";
 import ImageSlider from "./ImageSlider";
 
 const SearchContainer = styled.div`
-  font-family: "Figtree", sans-serif; /* Updated font-family, removed the duplicate */
-  font-weight: 300; /* Kept the latter font-weight */
-  font-style: normal; /* No conflict, but duplicated */
-  text-align: center;
-  color: #fff; /* No conflict, but duplicated */
-  padding: 30px; /* This overrides the initial padding-top of 110px */
-  width: 900px;
-  max-width: 400px; /* max-width takes precedence, width will effectively be 400px or less */
-  margin: 40px auto;
+  color: #fff;
+  padding: 30px;
+  width: 700px;
+  margin: 20px auto;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(16.4px);
-  -webkit-backdrop-filter: blur(16.4px); /* For Safari support */
-  display: flex; /* No conflict, but duplicated */
-  justify-content: center; /* No conflict, but duplicated */
-  flex-direction: column; /* Added for vertical alignment */
-  font-optical-sizing: auto; /* Specific font feature, no conflict */
+  -webkit-backdrop-filter: blur(16.4px);
 `;
 
 const Button = styled.button`
@@ -41,14 +31,9 @@ const Button = styled.button`
   font-style: normal;
 `;
 
-const Main = styled.div`
-  background-color: #3c6e71;
-  height: 100vh;
-  margin-top: 100px;
-  font-family: "Figtree", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  text-align: center;
+const List = styled.ul`
+  list-style-type: none;
+  text-align: left;
 `;
 
 export default function SearchResults({
@@ -56,6 +41,7 @@ export default function SearchResults({
   country,
   city,
   duration,
+  description,
   price,
 }) {
   return (
@@ -64,10 +50,12 @@ export default function SearchResults({
         {country}, {city}
       </h3>
       <ImageSlider images={photos} />
-      <ul>
+      <List>
+        <li>Description: {description}</li>
+        <br />
         <li>Duration: {duration} </li>
         <li>Price: {price} $</li>
-      </ul>
+      </List>
       <Button>See details</Button>
     </SearchContainer>
   );
