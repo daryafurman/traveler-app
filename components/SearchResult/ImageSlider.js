@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Image from "next/image";
 
 const SliderContainer = styled.div`
   overflow: hidden;
@@ -13,15 +13,14 @@ const SlideButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #333;
-  color: #fff;
+  background-color: transparent; /* Make the background transparent */
   border: none;
   cursor: pointer;
   padding: 10px;
   z-index: 100;
 
   &:hover {
-    background-color: #777;
+    opacity: 0.7; /* Adjust as needed for hover effect */
   }
 
   &.prev {
@@ -31,6 +30,13 @@ const SlideButton = styled.button`
   &.next {
     right: 10px;
   }
+`;
+
+const SlidesWrapper = styled.div`
+  display: flex;
+  transition: transform 0.5s ease-out;
+  transform: ${(props) => `translateX(-${props.slideIndex * 100}%)`};
+  width: 100%;
 `;
 
 const ImageSlider = ({ images }) => {
@@ -49,19 +55,23 @@ const ImageSlider = ({ images }) => {
   if (!images || images.length === 0) return <div>No Images</div>;
   return (
     <SliderContainer>
-      <SlideButton onClick={goToPrev}>
+      <SlideButton className="prev" onClick={goToPrev}>
         <Image src="/chevron_left.svg" width={35} height={35} alt="prev" />
       </SlideButton>
-      {images[currentIndex] && (
-        <Image
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex}`}
-          width={500}
-          height={300}
-          layout="responsive"
-        />
-      )}
-      <SlideButton onClick={goToNext}>
+      <SlidesWrapper slideIndex={currentIndex}>
+        {images.map((imgSrc, index) => (
+          <div key={index} style={{ minWidth: "100%", height: "100%" }}>
+            <Image
+              src={imgSrc}
+              alt={`Slide ${index}`}
+              width={500}
+              height={300}
+              layout="responsive"
+            />
+          </div>
+        ))}
+      </SlidesWrapper>
+      <SlideButton className="next" onClick={goToNext}>
         <Image src="/navigate_next.svg" width={35} height={35} alt="next" />
       </SlideButton>
     </SliderContainer>
