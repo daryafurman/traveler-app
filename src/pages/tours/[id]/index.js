@@ -1,7 +1,9 @@
 import { useRouter } from "next/router.js";
+import { useState } from "react";
 import useSWR from "swr";
 import styled from "styled-components";
 import ImageSlider from "../../../../components/SearchResult/ImageSlider";
+import Modal from "../../../../components/Modal";
 
 const Article = styled.article`
   padding: 20px;
@@ -41,6 +43,22 @@ const Button = styled.button`
   font-style: normal;
 `;
 export default function DetailsPage() {
+  const [modalShow, setModalShow] = useState(false);
+
+  const openModal = () => setModalShow(true);
+  const closeModal = () => setModalShow(false);
+
+  const handleModalSubmit = (event) => {
+    event.preventDefault();
+    const { name, email, question } = event.target.elements;
+    // Process the form data here (e.g., send to an API)
+    console.log({
+      name: name.value,
+      email: email.value,
+      question: question.value,
+    });
+    closeModal(); // Close modal after submission
+  };
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
@@ -54,6 +72,7 @@ export default function DetailsPage() {
   if (!data?.tour) return <h2>Tour not found</h2>;
 
   const tour = data.tour;
+
   return (
     <Main>
       <Article>
@@ -65,7 +84,12 @@ export default function DetailsPage() {
         <p>{Array.isArray(tour.itinarary) ? tour.itinarary.join(" , ") : ""}</p>
         <h4>Duration: {tour.duration}</h4>
         <h4>Price: {tour.price}$</h4>
-        <Button>Book Now</Button>
+        <Button onClick={openModal}>Book Now</Button>
+        <Modal
+          show={modalShow}
+          onClose={closeModal}
+          onSubmit={handleModalSubmit}
+        />
       </Article>
     </Main>
   );
