@@ -6,7 +6,7 @@ import AdminNavigation from "../../../../../components/Admin/AdminNavigation";
 import Link from "next/link";
 
 const Tour = styled.div`
-  background-color: #c2cb96;
+  background-color: #cbdde9;
   margin-top: 100px;
   height: 100hv;
 `;

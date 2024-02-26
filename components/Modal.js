@@ -54,7 +54,7 @@ const Modal = ({ show, onClose, onSubmit }) => {
       <Backdrop onClick={onClose} />
       <ModalWrapper>
         <Form onSubmit={onSubmit}>
-          <Input type="text" placeholder="Name" name="name" required />
+          <Input type="text" placeholder="Name Surname" name="name" required />
           <Input type="email" placeholder="Email" name="email" required />
           <Input
             type="text"

@@ -19,7 +19,7 @@ const Slogan = styled.h1`
   font-weight: 600;
   font-style: normal;
   font-size: 90px;
-  color: #f4743b;
+  color: #3f4d34;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,8 +33,8 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f4743b;
-  color: #beee62;
+  background-color: #f5bda8;
+  color: #3f4d34;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -47,8 +47,7 @@ const Button = styled.button`
 
 const SearchForm = styled.form`
   padding: 20px;
-  width: auto;
-  max-width: 250px;
+  width: 600px;
   margin: 100px auto;
   color: #beee62;
   font-size: 26px;
@@ -59,23 +58,24 @@ const SearchForm = styled.form`
   -webkit-backdrop-filter: blur(16.4px);
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
-`;
-
-const Row = styled.div`
-  margin-bottom: 20px; /* Example style */
-  display: flex;
   flex-direction: column;
-  align-items: start;
 
   label {
     margin-bottom: 5px;
     color: #beee62;
+    text-align: center;
   }
+`;
+
+const Row = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   input,
   select {
-    width: 80%;
+    width: 50%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 8px;
@@ -118,8 +118,8 @@ export default function TourSearch() {
           <br /> of a lifetime
         </Slogan>
         <SearchForm onSubmit={handleSearch}>
+          <label>Choose your destination</label>
           <Row>
-            <label>Choose your destination</label>
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -141,8 +141,8 @@ export default function TourSearch() {
                   </option>
                 ))}
             </select>
+            <Button type="submit">Search</Button>
           </Row>
-          <Button type="submit">Search</Button>
         </SearchForm>
       </SearchSection>
     </>

@@ -10,11 +10,12 @@ const Main = styled.div`
 const Table = styled.table`
   width: 70%;
   border-collapse: collapse;
+  font-family: "Figtree", sans-serif;
 `;
 
 const Th = styled.th`
-  background-color: #4caf50;
-  color: white;
+  background-color: #c2cb96;
+  color: #3f4d34;
   padding: 8px;
   text-align: left;
 `;
@@ -52,7 +53,7 @@ export default function AllRequest() {
       <Table>
         <thead>
           <tr>
-            <Th>Name</Th>
+            <Th>Name Surname</Th>
             <Th>Email</Th>
             <Th>Tour Name</Th>
             <Th>Question</Th>

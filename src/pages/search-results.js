@@ -5,7 +5,7 @@ import SearchResults from "../../components/SearchResult/SearchResult";
 import styled from "styled-components";
 
 const Main = styled.div`
-  background-color: #3c6e71;
+  background-color: #c2cb96;
   margin-top: 100px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
@@ -34,7 +34,7 @@ export default function ShowSearchResults() {
 
   return (
     <Main>
-      <h2 style={{ color: "#fff" }}>
+      <h2 style={{ color: "#3f4d34" }}>
         All the tours that we have available to {country}, {city}:
       </h2>
       {tours?.map((tour) => (

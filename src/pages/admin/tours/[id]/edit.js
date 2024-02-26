@@ -5,7 +5,7 @@ import Form from "../../../../../components/Admin/Form";
 import AdminNavigation from "../../../../../components/Admin/AdminNavigation";
 
 const EditTourContainer = styled.div`
-  background-color: #c2cb96;
+  background-color: #cbdde9;
   padding: 20px;
   margin-top: 100px;
 `;

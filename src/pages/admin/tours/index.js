@@ -5,7 +5,7 @@ import styled from "styled-components";
 import AllTours from "../../../../components/Admin/AllTours";
 
 const Main = styled.div`
-  background-color: #3c6e71;
+  background-color: #cbdde9;
   margin-top: 100px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;

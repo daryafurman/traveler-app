@@ -3,9 +3,13 @@ import styled from "styled-components";
 
 const Container = styled.div`
   color: white;
-  background-color: #3c6e71;
-  font-family: "Arial", sans-serif;
-  height: 100vh;
+  background-color: #cbdde9;
+  font-family: "Italiana", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  color: #3f4d34;
+  height: 77vh;
 `;
 
 const Header = styled.header`
@@ -68,10 +72,49 @@ export default function PopularDestinations() {
         <div>{/* Implement as needed */}</div>
       </Header>
       <Nav>
-        <Button primary>POPULAR</Button>
-        {/* Add more buttons as needed */}
+        <Button primary>Europe</Button>
+        <Button>Asia</Button>
+        <Button>Australia</Button>
+        <Button>North America</Button>
+        <Button>South America</Button>
+        <Button>Africa</Button>
+        <Button>Europe</Button>
       </Nav>
       <Main>
+        <Article>
+          <Image
+            src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Destination"
+            width={300}
+            height={200}
+          />
+          <DestinationTitle>Boyodo-in Temple</DestinationTitle>
+          <p className="text-yellow-300">USA</p>
+          <Price>from $450</Price>
+        </Article>
+        <Article>
+          <Image
+            src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Destination"
+            width={300}
+            height={200}
+          />
+          <DestinationTitle>Boyodo-in Temple</DestinationTitle>
+          <p className="text-yellow-300">USA</p>
+          <Price>from $450</Price>
+        </Article>
+
+        <Article>
+          <Image
+            src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Destination"
+            width={300}
+            height={200}
+          />
+          <DestinationTitle>Boyodo-in Temple</DestinationTitle>
+          <p className="text-yellow-300">USA</p>
+          <Price>from $450</Price>
+        </Article>
         <Article>
           <Image
             src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
