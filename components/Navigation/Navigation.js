@@ -35,7 +35,7 @@ const Navigation = () => {
       <nav>
         <List role="list">
           <li>
-            <NavLink href="/Home" passHref>
+            <NavLink href="/" passHref>
               Home
             </NavLink>
           </li>
@@ -46,12 +46,12 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink href="/destinations" passHref>
-              Destinations
+              Destinations*
             </NavLink>
           </li>
           <li>
             <NavLink href="/blog" passHref>
-              Blog
+              Blog*
             </NavLink>
           </li>
           <li>

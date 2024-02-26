@@ -37,17 +37,17 @@ const Button = styled.button`
   padding-right: 30px;
 `;
 
-const AccountsButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+// const AccountsButtonContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 export default function Header() {
   return (
     <HeaderContainer>
       <Logo>Traveler</Logo>
       <Navigation />
-      <AccountsButtonContainer>
+      {/* <AccountsButtonContainer>
         <Button>
           <Image
             src="/account.svg"
@@ -64,7 +64,7 @@ export default function Header() {
             alt="account-icon"
           ></Image>
         </Button>
-      </AccountsButtonContainer>
+      </AccountsButtonContainer> */}
     </HeaderContainer>
   );
 }

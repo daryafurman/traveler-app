@@ -8,7 +8,6 @@ const Article = styled.article`
   width: 1000px;
   margin: 40px auto;
   color: #fff;
-  background-color: #f4743b;
   color: #beee62;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -22,6 +21,24 @@ const Main = styled.div`
   font-weight: 300;
   font-style: normal;
   text-align: left;
+`;
+
+const Button = styled.button`
+  align-self: center;
+  gap: 10px;
+  width: 100px;
+  padding: 10px;
+  border-radius: 60px;
+  background-color: #f4743b;
+  color: #beee62;
+  border: none;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 `;
 export default function DetailsPage() {
   const router = useRouter();
@@ -48,6 +65,7 @@ export default function DetailsPage() {
         <p>{Array.isArray(tour.itinarary) ? tour.itinarary.join(" , ") : ""}</p>
         <h4>Duration: {tour.duration}</h4>
         <h4>Price: {tour.price}$</h4>
+        <Button>Book Now</Button>
       </Article>
     </Main>
   );
