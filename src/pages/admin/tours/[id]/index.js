@@ -6,17 +6,16 @@ import AdminNavigation from "../../../../../components/Admin/AdminNavigation";
 import Link from "next/link";
 
 const Tour = styled.div`
-  background-color: #3c6e71;
+  background-color: #c2cb96;
   margin-top: 100px;
   height: 100hv;
 `;
 
 const Article = styled.article`
   padding: 20px;
-  width: 1000px;
+  width: 700px;
   margin: 40px auto;
-
-  color: #fff;
+  color: #3f4d34;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -30,8 +29,8 @@ const EditButton = styled.button`
   padding: 10px;
   margin-right: 20px;
   border-radius: 60px;
-  background-color: #beee62;
-  color: #3c6e71;
+  background-color: #3f4d34;
+  color: #f5bda8;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -47,8 +46,8 @@ const DeleteButton = styled.button`
   padding: 10px;
   margin-right: 20px;
   border-radius: 60px;
-  background-color: #f4743b;
-  color: #beee62;
+  background-color: #f5bda8;
+  color: #3f4d34;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;

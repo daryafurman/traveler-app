@@ -5,7 +5,7 @@ import Form from "../../../../../components/Admin/Form";
 import AdminNavigation from "../../../../../components/Admin/AdminNavigation";
 
 const EditTourContainer = styled.div`
-  background-color: #3c6e71;
+  background-color: #c2cb96;
   padding: 20px;
   margin-top: 100px;
 `;
@@ -14,7 +14,7 @@ const Header = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #3f4d34;
   font-family: "Italiana", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -74,8 +74,8 @@ export default function EditTour() {
         <Header>Edit Tour</Header>
         <Form
           onSubmit={handleSubmit}
-          formName={"edit-tour"}
-          defaultData={tour}
+          formName={"Edit Tour"}
+          defaultData={tour.tour}
         />
       </EditTourContainer>
     </>

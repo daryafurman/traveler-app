@@ -9,8 +9,7 @@ const MenuContainer = styled.div`
   align-items: start;
   height: 100vh;
   width: 15%;
-  background-color: #f4743b;
-  padding-top: 100px;
+  background-color: #f5bda8;
 `;
 
 const List = styled.ul`
@@ -31,14 +30,26 @@ const List = styled.ul`
 const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 0.3rem;
-  color: ${({ $isActive }) => ($isActive ? "#beee62" : "#fff")};
+  color: #3f4d34;
   font-weight: bold;
-  display: flex; // To align the Image and text properly
-  align-items: center; // Center aligns items vertically within the NavLink
-  gap: 10px; // Adjust the gap between the icon and text as needed
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   &:hover {
     border-bottom: 5px dotted var(--primary-color);
+  }
+
+  // This media query is for demonstration. You might need to adjust it based on your design.
+  @media (min-width: 769px) {
+    // Styles or overrides for desktop view
+  }
+`;
+
+const NavLinkText = styled.span`
+  display: inline;
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -47,17 +58,12 @@ const AdminNavigation = () => {
     <MenuContainer>
       <nav>
         <List role="list">
-          <h3>
+          <li>
             <NavLink href="/admin" passHref>
-              <Image
-                src="/home.svg"
-                width={35}
-                height={35}
-                alt="home-icon"
-              ></Image>
-              Admin panel
+              <Image src="/home.svg" width={35} height={35} alt="home-icon" />
+              <NavLinkText>Admin panel</NavLinkText>
             </NavLink>
-          </h3>
+          </li>
           <li>
             <NavLink href="/admin" $isActive={true} passHref>
               <Image
@@ -65,8 +71,8 @@ const AdminNavigation = () => {
                 width={35}
                 height={35}
                 alt="tours-icon"
-              ></Image>
-              Tours
+              />
+              <NavLinkText>All Tours</NavLinkText>
             </NavLink>
           </li>
           <li>
@@ -76,19 +82,14 @@ const AdminNavigation = () => {
                 width={35}
                 height={35}
                 alt="add-tour-icon"
-              ></Image>
-              Add New Tour
+              />
+              <NavLinkText>Add New Tour</NavLinkText>
             </NavLink>
           </li>
           <li>
-            <NavLink href="/admin/requests" passHref>
-              <Image
-                src="/inbox.svg"
-                width={35}
-                height={35}
-                alt="inbox-icon"
-              ></Image>
-              New Requests
+            <NavLink href="/admin/request" passHref>
+              <Image src="/inbox.svg" width={35} height={35} alt="inbox-icon" />
+              <NavLinkText>All Requests</NavLinkText>
             </NavLink>
           </li>
         </List>

@@ -56,8 +56,19 @@ const Modal = ({ show, onClose, onSubmit }) => {
         <Form onSubmit={onSubmit}>
           <Input type="text" placeholder="Name" name="name" required />
           <Input type="email" placeholder="Email" name="email" required />
-          <Input type="text" placeholder="Question (Optional)" name="question" />
-          <Button type="submit">Send</Button>
+          <Input
+            type="text"
+            placeholder="You want to book tour to"
+            name="tour"
+            required
+          />
+
+          <Input
+            type="text"
+            placeholder="Question (Optional)"
+            name="question"
+          />
+          <Button type="submit">Send Request</Button>
         </Form>
       </ModalWrapper>
     </>

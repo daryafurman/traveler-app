@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdminNavigation from "../../../components/Admin/AdminNavigation";
 import AllTours from "../../../components/Admin/AllTours";
-import AddTour from "../../../components/Admin/AddTour";
-import AllRequest from "../../../components/Admin/AllRequest";
 
-const Main = styled.div`
-  background-color: #3c6e71;
+const AdminContainer = styled.div`
+  background-color: #c2cb96;
   margin-top: 100px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
@@ -31,11 +29,11 @@ export default function AdminPage() {
     fetchTours();
   }, []);
   return (
-    <Main>
-      <AdminNavigation />
-      <AllTours tours={tours} />
-      <AddTour />
-      {/* <AllRequest /> */}
-    </Main>
+    <>
+      <AdminContainer>
+        <AdminNavigation />
+        <AllTours tours={tours} />
+      </AdminContainer>
+    </>
   );
 }

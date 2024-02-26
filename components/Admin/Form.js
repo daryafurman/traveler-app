@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 export const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
-  padding-left: 240px;
   font-size: 20px;
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  color: #fff;
+  color: #3f4d34;
+  height: 100vh;
+  padding-left: 20%;
 `;
 
 export const Input = styled.input`
@@ -32,8 +33,8 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f4743b;
-  color: #beee62;
+  background-color: #3f4d34;
+  color: #f5bda8;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -50,8 +51,8 @@ const AddPhotoButton = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #beee62;
-  color: #f4743b;
+  background-color: #f5bda8;
+  color: #3f4d34;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -73,7 +74,7 @@ const PhotoInput = ({ id, value, onChange }) => (
   </div>
 );
 
-export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
+export default function TourForm({ onSubmit, formName, defaultValue, tourId }) {
   const [formData, setFormData] = useState({
     name: "",
     location: "",
@@ -83,7 +84,7 @@ export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
     itinerary: "",
     duration: "",
     price: "",
-    photos: [""], // Initialize photos with an empty string to represent an empty input field
+    photos: [""],
   });
 
   useEffect(() => {
@@ -92,7 +93,6 @@ export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
         .then((data) => {
           setFormData({
             ...data,
-            // Assuming data.photos is an array of photo URLs; if not, adjust accordingly
             photos: data.photos.length > 0 ? data.photos : [""],
           });
         })
@@ -130,7 +130,7 @@ export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
     event.preventDefault();
     onSubmit({
       ...formData,
-      photos: formData.photos.filter((url) => url.trim() !== ""), // Ensure to trim and remove empty URLs
+      photos: formData.photos.filter((url) => url.trim() !== ""),
     });
   }
 

@@ -43,7 +43,6 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <TourSearch />
       <OneTour>
         <Image

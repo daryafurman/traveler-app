@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import AddTour from "../../../components/Admin/AddTour";
+import AllRequest from "../../../components/Admin/AllRequest";
 import AdminNavigation from "../../../components/Admin/AdminNavigation";
 
-const AddTourContainer = styled.div`
-  background-color: #cbdde9;
+const RequestContainer = styled.div`
+  background-color: #3c6e71;
   padding: 20px;
   margin-top: 100px;
 `;
@@ -12,7 +12,7 @@ const Header = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #3f4d34;
+  color: #fff;
   font-family: "Italiana", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -23,10 +23,10 @@ export default function CreateTour() {
   return (
     <>
       <AdminNavigation />
-      <AddTourContainer>
-        <Header>Add Tour</Header>
-        <AddTour />
-      </AddTourContainer>
+      <RequestContainer>
+        <Header>All request:</Header>
+        <AllRequest />
+      </RequestContainer>
     </>
   );
 }

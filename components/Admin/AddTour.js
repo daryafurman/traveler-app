@@ -11,7 +11,9 @@ export const FormContainer = styled.form`
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  color: #fff;
+  color: #3f4d34;
+  padding-left: 20%;
+  height: 100vh;
 `;
 
 export const Input = styled.input`
@@ -33,8 +35,8 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f4743b;
-  color: #beee62;
+  background-color: #3f4d34;
+  color: #f5bda8;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;

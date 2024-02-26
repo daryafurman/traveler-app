@@ -3,7 +3,7 @@ import ImageSlider from "../SearchResult/ImageSlider";
 import { useRouter } from "next/router";
 
 const TourContainer = styled.div`
-  color: #fff;
+  color: #3f4d34;
   padding: 30px;
   width: 700px;
   margin: 20px auto;
@@ -20,8 +20,8 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f4743b;
-  color: #beee62;
+  background-color: #3f4d34;
+  color: #f5bda8;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;

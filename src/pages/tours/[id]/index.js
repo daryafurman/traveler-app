@@ -48,17 +48,34 @@ export default function DetailsPage() {
   const openModal = () => setModalShow(true);
   const closeModal = () => setModalShow(false);
 
-  const handleModalSubmit = (event) => {
+  const handleModalSubmit = async (event) => {
     event.preventDefault();
-    const { name, email, question } = event.target.elements;
-    // Process the form data here (e.g., send to an API)
-    console.log({
+    const { name, email, question, tour } = event.target.elements;
+
+    const formData = {
       name: name.value,
       email: email.value,
-      question: question.value,
+      tour: tour.value,
+      question: question.value || "",
+    };
+
+    const response = await fetch("/api/submitRequest", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
     });
-    closeModal(); // Close modal after submission
+
+    if (response.ok) {
+      console.log("Form submitted successfully");
+      closeModal();
+    } else {
+      const errorData = await response.json();
+      console.error("Failed to submit form:", errorData.error);
+    }
   };
+
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
