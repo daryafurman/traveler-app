@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 export const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
-  padding-left: 240px;
+  padding-left: 20%;
   font-size: 20px;
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
@@ -13,7 +13,6 @@ export const FormContainer = styled.form`
   font-style: normal;
   color: #3f4d34;
   padding-left: 20%;
-  height: 100vh;
 `;
 
 export const Input = styled.input`

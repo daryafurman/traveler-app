@@ -13,15 +13,15 @@ const SearchSection = styled.div`
   font-style: normal;
 `;
 
-const Slogan = styled.h1`
+const Slogan = styled.span`
   padding-top: 200px;
   font-family: "Italiana", sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 90px;
-  color: #3f4d34;
+  font-size: 60px;
+  color: #0a1f22;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   text-align: center;
   margin: auto;
@@ -48,8 +48,9 @@ const Button = styled.button`
 const SearchForm = styled.form`
   padding: 20px;
   width: 600px;
-  margin: 100px auto;
-  color: #beee62;
+  margin: auto;
+  margin-top: 300px;
+
   font-size: 26px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
@@ -62,7 +63,7 @@ const SearchForm = styled.form`
 
   label {
     margin-bottom: 5px;
-    color: #beee62;
+    color: #cbdde9;
     text-align: center;
   }
 `;
@@ -114,8 +115,7 @@ export default function TourSearch() {
     <>
       <SearchSection>
         <Slogan>
-          Embark on a journey
-          <br /> of a lifetime
+          EMB<em>A</em>RK ON A JOURNE<em>Y</em> OF A LIF<em>E</em>TIME
         </Slogan>
         <SearchForm onSubmit={handleSearch}>
           <label>Choose your destination</label>

@@ -7,17 +7,12 @@ import { useSession, signIn } from "next-auth/react";
 
 const AdminContainer = styled.div`
   background-color: #cbdde9;
-  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
   text-align: center;
-  padding: 20px;
-
-  @media (max-width: 768px) {
-    margin-top: 60px;
-    padding: 10px;
-  }
 `;
 
 export default function AdminPage() {

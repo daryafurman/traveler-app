@@ -5,7 +5,8 @@ import AdminNavigation from "../../../components/Admin/AdminNavigation";
 const AddTourContainer = styled.div`
   background-color: #cbdde9;
   padding: 20px;
-  margin-top: 100px;
+  padding-top: 100px;
+  height: 100vh;
 `;
 
 const Header = styled.h1`

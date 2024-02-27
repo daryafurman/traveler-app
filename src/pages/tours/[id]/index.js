@@ -5,23 +5,20 @@ import styled from "styled-components";
 import ImageSlider from "../../../../components/SearchResult/ImageSlider";
 import Modal from "../../../../components/Modal";
 
-const Article = styled.article`
-  padding: 20px;
-  width: 1000px;
-  margin: 40px auto;
-  color: #3f4d34;
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(16.4px);
-  -webkit-backdrop-filter: blur(16.4px);
-`;
 const Main = styled.div`
-  background-color: #c2cb96;
-  margin-top: 100px;
+  background-color: #cbdde9;
+  height: 100%;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
   text-align: left;
+`;
+
+const Article = styled.article`
+  padding: 20px;
+  width: 1000px;
+  margin: 40px auto;
+  color: #0a1f22;
 `;
 
 const Button = styled.button`
@@ -31,7 +28,7 @@ const Button = styled.button`
   padding: 10px;
   border-radius: 60px;
   background-color: #3f4d34;
-  color: #f5bda8;
+  color: #fff;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;

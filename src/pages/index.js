@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Tours from "../../components/Tours/Tours.js";
 import Image from "next/image.js";
 import PopularDestinations from "../../components/PopularDestinations/PopularDestinations.js";
+import Questions from "../../components/Questions.js";
 
 const SliderContainer = styled.div`
   overflow: hidden;
@@ -81,6 +82,7 @@ export default function Home() {
           alt="next"
         />
       </OneTour>
+      <Questions />
     </>
   );
 }

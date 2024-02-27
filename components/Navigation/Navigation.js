@@ -17,12 +17,13 @@ const List = styled.ul`
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  padding-right: 30px;
 `;
 
 const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 0.3rem;
-  color: #cbdde9;
+  color: #3f4d34;
   font-weight: bold;
   &:hover {
     border-bottom: 5px dotted var(--primary-color);

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const MenuContainer = styled.div`
+  margin-top: 100px;
   position: fixed;
   display: flex;
   justify-content: flex-start;
@@ -52,6 +53,7 @@ const NavLink = styled(Link)`
 
 const NavLinkText = styled.span`
   display: inline;
+
   @media (max-width: 768px) {
     display: none;
   }

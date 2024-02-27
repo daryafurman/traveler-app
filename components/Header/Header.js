@@ -13,8 +13,10 @@ const HeaderContainer = styled.div`
   left: 0;
   top: 0;
   right: 15px;
-  background-color: #3f4d34;
+  background-color: transparent;
   padding: 0;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(16.4px);
 `;
 
 const Logo = styled.h1`
@@ -22,7 +24,7 @@ const Logo = styled.h1`
   font-weight: 600;
   font-style: normal;
   font-size: 45px;
-  color: #cbdde9;
+  color: #3f4d34;
   padding-left: 70px;
 `;
 

@@ -6,7 +6,6 @@ import AllTours from "../../../../components/Admin/AllTours";
 
 const Main = styled.div`
   background-color: #cbdde9;
-  margin-top: 100px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;

@@ -5,7 +5,7 @@ import AdminNavigation from "../../../components/Admin/AdminNavigation";
 const RequestContainer = styled.div`
   background-color: #cbdde9;
   padding: 20px;
-  margin-top: 100px;
+  padding-top: 100px;
 `;
 
 const Header = styled.h1`
