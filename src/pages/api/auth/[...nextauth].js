@@ -1,30 +1,32 @@
 import NextAuth from "next-auth";
-// Import each provider you intend to use
-import EmailProvider from "next-auth/providers/email";
-import GitHubProvider from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import dbConnect from "../../../../db/connection";
+import clientPromise from "../../../../db/mongodbClient";
 
 export default NextAuth({
+  adapter: MongoDBAdapter(clientPromise),
+
   providers: [
-    EmailProvider({
-      server: {
-        // Assuming you want to use SMTP settings for the email server
-        host: process.env.EMAIL_HOST,
-        port: process.env.EMAIL_PORT,
-        auth: {
-          user: process.env.EMAIL_USERNAME,
-          pass: process.env.EMAIL_PASSWORD,
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
         },
       },
-      from: process.env.EMAIL_FROM,
+      profile(profile) {
+        console.log("profile", profile);
+        return { id: profile.email, role: profile.role ?? "admin", ...profile };
+      },
     }),
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-    // Add other providers as needed
   ],
-  adapter: MongoDBAdapter(dbConnect),
-  // No need to specify 'database' when using an adapter
+  callbacks: {
+    async session({ session, user }) {
+      session.user.role = user.role;
+      return session;
+    },
+  },
 });

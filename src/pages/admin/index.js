@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdminNavigation from "../../../components/Admin/AdminNavigation";
 import AllTours from "../../../components/Admin/AllTours";
+import { useSession, signIn } from "next-auth/react";
 
 const AdminContainer = styled.div`
   background-color: #cbdde9;
@@ -20,20 +21,36 @@ const AdminContainer = styled.div`
 `;
 
 export default function AdminPage() {
+  const { data: session, status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      signIn();
+    },
+  });
   const [tours, setTours] = useState([]);
-
+  console.log("session", session);
   useEffect(() => {
-    const fetchTours = async () => {
-      try {
-        const response = await axios.get("/api/tours");
-        setTours(response.data);
-      } catch (error) {
-        console.error("Failed to fetch tours:", error);
-      }
-    };
+    if (session?.user.role === "admin") {
+      const fetchTours = async () => {
+        try {
+          const response = await axios.get("/api/tours");
+          setTours(response.data);
+        } catch (error) {
+          console.error("Failed to fetch tours:", error);
+        }
+      };
 
-    fetchTours();
-  }, []);
+      fetchTours();
+    }
+  }, [session]);
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (session?.user.role !== "admin") {
+    return <p>You are not authorized to view this page!</p>;
+  }
   return (
     <>
       <AdminContainer>

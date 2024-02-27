@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Head from "next/head.js";
-import Header from "../Header/Header";
+import Header from "./Header/Header";
 
 const Main = styled.main``;
 
@@ -11,7 +11,7 @@ export default function Layout({ children }) {
         <title>Traveler</title>
         <link rel="icon" href="/traveler.svg" />
       </Head>
-      <Header></Header>
+      <Header />
       <Main>{children}</Main>
     </>
   );
