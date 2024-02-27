@@ -9,7 +9,6 @@ const Container = styled.div`
   font-style: normal;
   text-align: center;
   color: #3f4d34;
-  height: 77vh;
 `;
 
 const Header = styled.header`
@@ -30,8 +29,8 @@ const Nav = styled.nav`
 `;
 
 const Button = styled.button`
-  background: ${(props) => (props.primary ? "#fbbf24" : "transparent")};
-  color: ${(props) => (props.primary ? "black" : "#fbbf24")};
+  background: ${(props) => (props.primary ? "#f5bda8" : "transparent")};
+  color: ${(props) => (props.primary ? "3f4d34" : "#3f4d34")};
   margin-right: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;

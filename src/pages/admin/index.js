@@ -11,6 +11,12 @@ const AdminContainer = styled.div`
   font-weight: 300;
   font-style: normal;
   text-align: center;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 60px;
+    padding: 10px;
+  }
 `;
 
 export default function AdminPage() {

@@ -12,6 +12,11 @@ const TourContainer = styled.div`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(16.4px);
   -webkit-backdrop-filter: blur(16.4px);
+
+  @media (max-width: 768px) {
+    width: 90%; // Use percentage-based width for smaller screens
+    padding: 15px; // Reduce padding on smaller screens
+  }
 `;
 
 const Button = styled.button`

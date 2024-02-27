@@ -9,7 +9,11 @@ const MenuContainer = styled.div`
   align-items: start;
   height: 100vh;
   width: 15%;
-  background-color: #f5bda8;
+  background-color: #eecb75;
+
+  @media (max-width: 768px) {
+    width: 60px;
+  }
 `;
 
 const List = styled.ul`

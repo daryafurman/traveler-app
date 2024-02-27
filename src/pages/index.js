@@ -44,6 +44,7 @@ export default function Home() {
   return (
     <>
       <TourSearch />
+      <PopularDestinations />
       <OneTour>
         <Image
           onClick={prevSlide}
@@ -80,7 +81,6 @@ export default function Home() {
           alt="next"
         />
       </OneTour>
-      <PopularDestinations></PopularDestinations>
     </>
   );
 }
