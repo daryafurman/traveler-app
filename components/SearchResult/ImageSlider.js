@@ -6,21 +6,20 @@ const SliderContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 400px; // Adjust to fit your design
 `;
 
 const SlideButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: transparent; /* Make the background transparent */
+  background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 10px;
   z-index: 100;
 
   &:hover {
-    opacity: 0.7; /* Adjust as needed for hover effect */
+    opacity: 0.7;
   }
 
   &.prev {

@@ -5,7 +5,7 @@ const ContainerTitle = styled.h1`
   font-weight: 600;
   font-style: normal;
   text-align: center;
-  color: #fff;
+  color: #3f4d34;
 `;
 
 const TextContainer = styled.div`
@@ -17,7 +17,7 @@ const TextContainer = styled.div`
   width: 500px;
   max-width: 400px;
   margin: 40px auto;
-  color: #fff;
+  color: #3f4d34;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

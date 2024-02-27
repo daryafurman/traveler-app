@@ -17,12 +17,13 @@ const List = styled.ul`
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  padding-right: 30px;
 `;
 
 const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 0.3rem;
-  color: ${({ $isActive }) => ($isActive ? "#f4743b" : "#3c6e71")};
+  color: #3f4d34;
   font-weight: bold;
   &:hover {
     border-bottom: 5px dotted var(--primary-color);
@@ -35,7 +36,7 @@ const Navigation = () => {
       <nav>
         <List role="list">
           <li>
-            <NavLink href="/Home" passHref>
+            <NavLink href="/" passHref>
               Home
             </NavLink>
           </li>
@@ -46,12 +47,12 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink href="/destinations" passHref>
-              Destinations
+              Destinations*
             </NavLink>
           </li>
           <li>
             <NavLink href="/blog" passHref>
-              Blog
+              Blog*
             </NavLink>
           </li>
           <li>

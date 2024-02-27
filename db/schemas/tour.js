@@ -12,7 +12,7 @@ const tourSchema = new Schema({
   itinarary: [{ type: String, required: true }],
 });
 
-tourSchema.index({ country: 1, city: 1 });
+tourSchema.index({ country: 1, city: 2 });
 
 const Tour = mongoose.models.Tour || mongoose.model("Tour", tourSchema);
 

@@ -5,8 +5,12 @@ import SearchResults from "../../components/SearchResult/SearchResult";
 import styled from "styled-components";
 
 const Main = styled.div`
-  background-color: #3c6e71;
-  margin-top: 100px;
+  background-color: #cbdde9;
+  padding-top: 100px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -33,22 +37,24 @@ export default function ShowSearchResults() {
     return <div>No tours found for the selected destination.</div>;
 
   return (
-    <Main>
-      <h2 style={{ color: "#fff" }}>
+    <>
+      <h2 style={{ color: "#3f4d34" }}>
         All the tours that we have available to {country}, {city}:
       </h2>
-      {tours?.map((tour) => (
-        <SearchResults
-          key={tour.id}
-          id={tour._id}
-          photos={tour.photos}
-          country={tour.country}
-          city={tour.city}
-          description={tour.description}
-          duration={tour.duration}
-          price={tour.price}
-        />
-      ))}
-    </Main>
+      <Main>
+        {tours?.map((tour) => (
+          <SearchResults
+            key={tour.id}
+            id={tour._id}
+            photos={tour.photos}
+            country={tour.country}
+            city={tour.city}
+            description={tour.description}
+            duration={tour.duration}
+            price={tour.price}
+          />
+        ))}
+      </Main>
+    </>
   );
 }

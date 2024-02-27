@@ -3,15 +3,19 @@ import ImageSlider from "./ImageSlider";
 import { useRouter } from "next/router";
 
 const SearchContainer = styled.div`
-  color: #fff;
+  color: #0a1f22;
   padding: 30px;
-  width: 700px;
+  width: 90vw;
+  max-width: 600px;
   margin: 20px auto;
+  justify-content: space-between;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(16.4px);
   -webkit-backdrop-filter: blur(16.4px);
+  display: flex; /* If you want to use flex properties */
+  flex-direction: column; /* Stack children vertically */
 `;
 
 const Button = styled.button`
@@ -20,8 +24,8 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f4743b;
-  color: #beee62;
+  background-color: #3f4d34;
+  color: #f5bda8;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -43,7 +47,6 @@ export default function SearchResults({
   country,
   city,
   duration,
-  description,
   price,
 }) {
   const router = useRouter();
@@ -57,13 +60,13 @@ export default function SearchResults({
         {country}, {city}
       </h3>
       <ImageSlider images={photos} />
-      <List>
-        <li>Description: {description}</li>
-        <br />
-        <li>Duration: {duration} </li>
-        <li>Price: {price} $</li>
-      </List>
-      <Button onClick={handleSeeDetailsClick}>See details</Button>
+      <div style={{ display: "flex", gap: "50%" }}>
+        <List>
+          <li>Duration: {duration} </li>
+          <li>Price: {price} $</li>
+        </List>
+        <Button onClick={handleSeeDetailsClick}>See details</Button>
+      </div>
     </SearchContainer>
   );
 }

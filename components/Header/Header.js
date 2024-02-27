@@ -1,6 +1,5 @@
 import Navigation from "../Navigation/Navigation.js";
 import styled from "styled-components";
-import Image from "next/image.js";
 
 const HeaderContainer = styled.div`
   height: 100px;
@@ -14,8 +13,10 @@ const HeaderContainer = styled.div`
   left: 0;
   top: 0;
   right: 15px;
-  background-color: #beee62;
+  background-color: transparent;
   padding: 0;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(16.4px);
 `;
 
 const Logo = styled.h1`
@@ -23,48 +24,15 @@ const Logo = styled.h1`
   font-weight: 600;
   font-style: normal;
   font-size: 45px;
-  color: #3c6e71;
+  color: #3f4d34;
   padding-left: 70px;
 `;
 
-const Button = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 30px;
-`;
-
-const AccountsButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 export default function Header() {
   return (
     <HeaderContainer>
       <Logo>Traveler</Logo>
       <Navigation />
-      <AccountsButtonContainer>
-        <Button>
-          <Image
-            src="/account.svg"
-            width={35}
-            height={35}
-            alt="account-icon"
-          ></Image>
-        </Button>
-        <Button>
-          <Image
-            src="/add-account.svg"
-            width={35}
-            height={35}
-            alt="account-icon"
-          ></Image>
-        </Button>
-      </AccountsButtonContainer>
     </HeaderContainer>
   );
 }

@@ -1,23 +1,132 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-const DestinationsContainer = styled.div`
+const Container = styled.div`
+  color: white;
+  background-color: #cbdde9;
   font-family: "Italiana", sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 70px;
-  height: 100vh;
-  background-color: #70ae6e;
+  text-align: center;
+  color: #3f4d34;
+`;
+
+const Header = styled.header`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 2rem;
+`;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+`;
+
+const Button = styled.button`
+  background: ${(props) => (props.primary ? "#f5bda8" : "transparent")};
+  color: ${(props) => (props.primary ? "3f4d34" : "#3f4d34")};
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  &:hover {
+    color: white;
+  }
+`;
+
+const Main = styled.main`
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+`;
+
+const Article = styled.article`
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: white;
+`;
+
+const DestinationTitle = styled.h2`
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+`;
+
+const Price = styled.p`
+  font-size: 1.25rem;
 `;
 
 export default function PopularDestinations() {
   return (
-    <>
-      <DestinationsContainer>
-        <p>Popular Destinations:</p>
-      </DestinationsContainer>
-    </>
+    <Container>
+      <Header>
+        <Title>DISCOVER POPULAR DESTINATIONS</Title>
+        <div>{/* Implement as needed */}</div>
+      </Header>
+      <Nav>
+        <Button primary>Europe</Button>
+        <Button>Asia</Button>
+        <Button>Australia</Button>
+        <Button>North America</Button>
+        <Button>South America</Button>
+        <Button>Africa</Button>
+        <Button>Europe</Button>
+      </Nav>
+      <Main>
+        <Article>
+          <Image
+            src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Destination"
+            width={300}
+            height={200}
+          />
+          <DestinationTitle>Boyodo-in Temple</DestinationTitle>
+          <p className="text-yellow-300">USA</p>
+          <Price>from $450</Price>
+        </Article>
+        <Article>
+          <Image
+            src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Destination"
+            width={300}
+            height={200}
+          />
+          <DestinationTitle>Boyodo-in Temple</DestinationTitle>
+          <p className="text-yellow-300">USA</p>
+          <Price>from $450</Price>
+        </Article>
+
+        <Article>
+          <Image
+            src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Destination"
+            width={300}
+            height={200}
+          />
+          <DestinationTitle>Boyodo-in Temple</DestinationTitle>
+          <p className="text-yellow-300">USA</p>
+          <Price>from $450</Price>
+        </Article>
+        <Article>
+          <Image
+            src="https://images.unsplash.com/photo-1682686579976-879b74d6d7ea?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Destination"
+            width={300}
+            height={200}
+          />
+          <DestinationTitle>Boyodo-in Temple</DestinationTitle>
+          <p className="text-yellow-300">USA</p>
+          <Price>from $450</Price>
+        </Article>
+        {/* Add more articles as needed */}
+      </Main>
+    </Container>
   );
 }

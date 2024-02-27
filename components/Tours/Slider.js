@@ -6,7 +6,7 @@ const SliderContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 400px; // Adjust to fit your design
+  height: 400px;
 `;
 
 const SlideButton = styled.button`

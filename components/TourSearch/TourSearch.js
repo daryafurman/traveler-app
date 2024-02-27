@@ -13,15 +13,15 @@ const SearchSection = styled.div`
   font-style: normal;
 `;
 
-const Slogan = styled.h1`
+const Slogan = styled.span`
   padding-top: 200px;
   font-family: "Italiana", sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 90px;
-  color: #f4743b;
+  font-size: 60px;
+  color: #0a1f22;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   text-align: center;
   margin: auto;
@@ -33,8 +33,8 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f4743b;
-  color: #beee62;
+  background-color: #f5bda8;
+  color: #3f4d34;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -47,10 +47,10 @@ const Button = styled.button`
 
 const SearchForm = styled.form`
   padding: 20px;
-  width: auto;
-  max-width: 250px;
-  margin: 100px auto;
-  color: #beee62;
+  width: 600px;
+  margin: auto;
+  margin-top: 300px;
+
   font-size: 26px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
@@ -59,23 +59,24 @@ const SearchForm = styled.form`
   -webkit-backdrop-filter: blur(16.4px);
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
-`;
-
-const Row = styled.div`
-  margin-bottom: 20px; /* Example style */
-  display: flex;
   flex-direction: column;
-  align-items: start;
 
   label {
     margin-bottom: 5px;
-    color: #beee62;
+    color: #cbdde9;
+    text-align: center;
   }
+`;
+
+const Row = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   input,
   select {
-    width: 80%;
+    width: 50%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 8px;
@@ -114,12 +115,11 @@ export default function TourSearch() {
     <>
       <SearchSection>
         <Slogan>
-          Embark on a journey
-          <br /> of a lifetime
+          EMB<em>A</em>RK ON A JOURNE<em>Y</em> OF A LIF<em>E</em>TIME
         </Slogan>
         <SearchForm onSubmit={handleSearch}>
+          <label>Choose your destination</label>
           <Row>
-            <label>Choose your destination</label>
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -141,8 +141,8 @@ export default function TourSearch() {
                   </option>
                 ))}
             </select>
+            <Button type="submit">Search</Button>
           </Row>
-          <Button type="submit">Search</Button>
         </SearchForm>
       </SearchSection>
     </>

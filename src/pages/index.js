@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Tours from "../../components/Tours/Tours.js";
 import Image from "next/image.js";
 import PopularDestinations from "../../components/PopularDestinations/PopularDestinations.js";
+import Questions from "../../components/Questions.js";
 
 const SliderContainer = styled.div`
   overflow: hidden;
@@ -23,7 +24,7 @@ const OneTour = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f4743b;
+  background-color: #eecb75;
 `;
 
 export default function Home() {
@@ -43,8 +44,8 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <TourSearch />
+      <PopularDestinations />
       <OneTour>
         <Image
           onClick={prevSlide}
@@ -81,7 +82,7 @@ export default function Home() {
           alt="next"
         />
       </OneTour>
-      <PopularDestinations></PopularDestinations>
+      <Questions />
     </>
   );
 }
