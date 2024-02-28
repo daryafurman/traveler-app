@@ -8,14 +8,25 @@ const SliderContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 100%;
-  margin: 60px;
+  height: auto; /* Adjusted to auto to accommodate content */
+  margin: 60px 0; /* Adjusted to remove horizontal margin which can cause overflow */
+
+  @media (max-width: 768px) {
+    margin: 30px 0; /* Smaller margin on smaller screens */
+  }
 `;
 
 const SlidesWrapper = styled.div`
   display: flex;
   transition: transform 0.5s ease-out;
-  width: 40%;
+  width: calc(100% + 30px); // Adjust based on the total margin you'll add
+  > div {
+    margin-right: 30px; // Adds space between the items
+    width: calc(100% - 30px); // Adjust the width based on the margin
+    &:last-child {
+      margin-right: 0; // Removes margin from the last item
+    }
+  }
 `;
 
 const OneTourContainer = styled.div`

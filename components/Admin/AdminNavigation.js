@@ -7,13 +7,14 @@ const MenuContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: start;
-  height: 100vh;
-  width: 15%;
-  margin-top: 100px;
+  height: calc(100vh - 100px); /* Adjust height to account for fixed header */
+  width: 250px; /* Set a standard width or 15% whichever works for your design */
+  top: 100px; /* Adjusted from margin-top to top */
   background-color: #0a1f22;
+  transition: width 0.3s ease; /* Smooth transition for responsive changes */
 
   @media (max-width: 768px) {
-    width: 60px;
+    width: 60px; /* Adjust as needed for smaller screens */
   }
 `;
 

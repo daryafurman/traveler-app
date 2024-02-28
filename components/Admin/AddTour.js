@@ -5,14 +5,13 @@ import { useRouter } from "next/router";
 export const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
-  padding-left: 20%;
+
   font-size: 20px;
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
   color: #3f4d34;
-  padding-left: 20%;
 `;
 
 export const Input = styled.input`
@@ -83,7 +82,7 @@ export default function AddTour({ onSubmit }) {
     description: "",
     country: "",
     city: "",
-    itinerary: "",
+    itinerary: [""],
     duration: "",
     price: "",
     photos: [""], // Initialize photos with an empty string to represent an empty input field
@@ -183,6 +182,18 @@ export default function AddTour({ onSubmit }) {
         defaultValue={formData.price}
         onChange={handleInputChange}
       />
+      <Label>Photos</Label>
+      {formData.photos.map((url, index) => (
+        <PhotoInput
+          key={index}
+          id={index}
+          value={url}
+          onChange={handlePhotoChange}
+        />
+      ))}
+      <AddPhotoButton type="button" onClick={addPhotoField}>
+        Add Photo
+      </AddPhotoButton>
 
       <Button type="submit">Create Tour</Button>
     </FormContainer>

@@ -12,9 +12,14 @@ const HeaderContainer = styled.div`
   left: 0;
   top: 0;
   background-color: transparent;
-  padding: 0;
+  padding: 0 20px; // Add some padding on smaller screens
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
+
+  @media (max-width: 768px) {
+    height: 80px; // Reduce height on smaller screens
+    padding: 0 15px; // Adjust padding for smaller screens
+  }
 `;
 
 const Logo = styled.h1`
@@ -24,12 +29,25 @@ const Logo = styled.h1`
   font-size: 45px;
   color: #0a1f22;
   padding-left: 70px;
+
+  // em {
+  //   color: orange;
+  // }
+
+  @media (max-width: 768px) {
+    font-size: 35px; // Reduce font size on smaller screens
+    padding-left: 20px; // Adjust padding for smaller screens
+  }
 `;
 
 const MenuContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media (max-width: 768px) {
+    // Optional: Hide MenuContainer on smaller screens if implementing a hamburger menu
+  }
 `;
 
 const List = styled.ul`
@@ -42,6 +60,12 @@ const List = styled.ul`
   font-weight: 300;
   font-style: normal;
   padding-right: 30px;
+
+  @media (max-width: 768px) {
+    gap: 0.8rem; // Reduce gap between items
+    font-size: 16px; // Reduce font size
+    padding-right: 15px; // Adjust padding for smaller screens
+  }
 `;
 
 const NavLink = styled.a`
@@ -58,7 +82,9 @@ const NavLink = styled.a`
 export default function Header() {
   return (
     <HeaderContainer>
-      <Logo>Traveler</Logo>
+      <Logo>
+        <em>T</em>r<em></em>aveler
+      </Logo>
       <MenuContainer>
         <nav>
           <List role="list">

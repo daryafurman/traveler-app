@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const SearchSection = styled.div`
   background-image: url("/main.jpg");
   height: 100vh;
+  gap: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,20 +12,28 @@ const SearchSection = styled.div`
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Adjusted for vertical centering
+  text-align: center; // Center text for all child elements
 `;
 
 const Slogan = styled.span`
-  padding-top: 200px;
+  padding-top: 0; // Adjusted padding
   font-family: "Italiana", sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 60px;
   color: #0a1f22;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
-  margin: auto;
+  margin: 0 20px; // Ensure some spacing on smaller screens
+
+  em {
+    color: orange;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 40px; // Smaller font size for mobile devices
+  }
 `;
 
 const Button = styled.button`
@@ -33,7 +42,7 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f5bda8;
+  background-color: orange;
   color: #3f4d34;
   border: none;
   letter-spacing: 0.4px;
@@ -47,24 +56,19 @@ const Button = styled.button`
 
 const SearchForm = styled.form`
   padding: 20px;
-  width: 600px;
-  margin: auto;
-  margin-top: 300px;
-
-  font-size: 26px;
+  width: 90%; // Use percentage-based width for responsiveness
+  max-width: 600px; // Maximum width to maintain design integrity
+  margin: 20px auto; // Adjusted margin for auto and top spacing
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(16.4px);
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
 
-  label {
-    margin-bottom: 5px;
-    color: #fff;
-    text-align: center;
+  @media (max-width: 768px) {
+    margin-top: 10px; // Less margin on top for smaller devices
   }
 `;
 
@@ -73,6 +77,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 20px;
 
   input,
   select {
@@ -88,23 +93,47 @@ const Row = styled.div`
 export default function TourSearch() {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [locations, setLocations] = useState({ countries: [], cities: [] });
+  const [countries, setCountries] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [filteredCities, setFilteredCities] = useState([]);
 
   useEffect(() => {
     fetch("/api/locations")
       .then((res) => res.json())
       .then((data) => {
-        const { countries, cities } = data;
-        if (Array.isArray(countries) && Array.isArray(cities)) {
-          setLocations({ countries, cities });
+        if (Array.isArray(data.countries)) {
+          setCountries(data.countries);
         } else {
           console.error("Unexpected data structure:", data);
         }
       })
       .catch((error) => {
-        console.error("Failed to fetch locations:", error);
+        console.error("Failed to fetch countries:", error);
       });
   }, []);
+
+  useEffect(() => {
+    if (country) {
+      fetch(`/api/locations?country=${country}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (Array.isArray(data)) {
+            const uniqueCities = [...new Set(data.map((tour) => tour.city))];
+            setFilteredCities(uniqueCities);
+          } else {
+            console.error("Unexpected data structure:", data);
+          }
+        })
+        .catch((error) => {
+          console.error(
+            `Failed to fetch cities for country ${country}:`,
+            error
+          );
+        });
+    } else {
+      setFilteredCities([]);
+    }
+  }, [country]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -115,31 +144,29 @@ export default function TourSearch() {
     <>
       <SearchSection>
         <Slogan>
-          EMB<em>A</em>RK ON A JOURNE<em>Y</em> OF A LIF<em>E</em>TIME
+          EMB<em>A</em>RK ON A JOURNE<em>Y </em> OF A LIF<em>E</em>TIME
         </Slogan>
         <SearchForm onSubmit={handleSearch}>
-          <label>Choose your destination</label>
+          <h1>Choose your destination</h1>
           <Row>
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             >
               <option value="">Country</option>
-              {locations.countries &&
-                locations.countries.map((country) => (
-                  <option key={country} value={country}>
-                    {country}
-                  </option>
-                ))}
+              {countries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
             </select>
             <select value={city} onChange={(e) => setCity(e.target.value)}>
               <option value="">City</option>
-              {locations.cities &&
-                locations.cities.map((city) => (
-                  <option key={city} value={city}>
-                    {city}
-                  </option>
-                ))}
+              {filteredCities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
             </select>
             <Button type="submit">Search</Button>
           </Row>

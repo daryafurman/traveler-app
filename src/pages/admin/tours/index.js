@@ -42,6 +42,7 @@ export default function ShowSearchResults() {
           country={tour.country}
           city={tour.city}
           description={tour.description}
+          itinarary={tour.itinerary}
           duration={tour.duration}
           price={tour.price}
         />

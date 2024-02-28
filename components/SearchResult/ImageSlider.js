@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
@@ -29,13 +29,23 @@ const SlideButton = styled.button`
   &.next {
     right: 10px;
   }
+
+  @media (max-width: 768px) {
+    padding-top: 100px;
+    padding: 8px; // Slightly smaller for mobile
+    font-size: 0.8em; // Adjust font size if necessary
+  }
 `;
 
 const SlidesWrapper = styled.div`
   display: flex;
   transition: transform 0.5s ease-out;
   transform: ${(props) => `translateX(-${props.slideIndex * 100}%)`};
-  width: 100%;
+`;
+
+const ImageContainer = styled.div`
+  flex: 0 0 100%;
+  height: 100%; // Consider setting a specific height or using aspect ratio boxes
 `;
 
 const ImageSlider = ({ images }) => {
@@ -51,27 +61,48 @@ const ImageSlider = ({ images }) => {
     );
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowRight") {
+        goToNext();
+      } else if (event.key === "ArrowLeft") {
+        goToPrev();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [images.length]); // Add dependencies here if your images array can change
+
   if (!images || images.length === 0) return <div>No Images</div>;
+
   return (
     <SliderContainer>
-      <SlideButton className="prev" onClick={goToPrev}>
-        <Image src="/chevron_left.svg" width={35} height={35} alt="prev" />
+      <SlideButton
+        className="prev"
+        onClick={goToPrev}
+        aria-label="Previous Slide"
+      >
+        <Image src="/chevron_left.svg" width={35} height={35} alt="Previous" />
       </SlideButton>
       <SlidesWrapper slideIndex={currentIndex}>
         {images.map((imgSrc, index) => (
-          <div key={index} style={{ minWidth: "100%", height: "100%" }}>
+          <ImageContainer key={index}>
             <Image
               src={imgSrc}
-              alt={`Slide ${index}`}
+              alt={`Slide ${index + 1}`}
               width={500}
               height={300}
               layout="responsive"
             />
-          </div>
+          </ImageContainer>
         ))}
       </SlidesWrapper>
-      <SlideButton className="next" onClick={goToNext}>
-        <Image src="/navigate_next.svg" width={35} height={35} alt="next" />
+      <SlideButton className="next" onClick={goToNext} aria-label="Next Slide">
+        <Image src="/navigate_next.svg" width={35} height={35} alt="Next" />
       </SlideButton>
     </SliderContainer>
   );

@@ -9,10 +9,15 @@ const AdminContainer = styled.div`
   background-color: #cbdde9;
   display: flex;
   flex-wrap: wrap;
+
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding-right: 20px; /* Adjust based on MenuContainer's responsive width */
+  }
 `;
 
 export default function AdminPage() {

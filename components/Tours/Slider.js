@@ -31,6 +31,11 @@ const SlideButton = styled.button`
   &.next {
     right: 10px;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px; // Slightly smaller for mobile
+    font-size: 0.8em; // Adjust font size if necessary
+  }
 `;
 
 const SlidesWrapper = styled.div`

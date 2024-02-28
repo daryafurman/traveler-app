@@ -8,3 +8,8 @@ root {
   --lime: #beee62;
   --tangerine: #f4743b;
 }
+
+html,
+body {
+  margin: 0;
+}
