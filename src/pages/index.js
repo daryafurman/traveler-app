@@ -3,14 +3,24 @@ import PopularDestinations from "../../components/PopularDestinations/PopularDes
 import Questions from "../../components/Questions.js";
 import OneTour from "../../components/Tours/OneTour.js";
 import TourSearch from "../../components/TourSearch/TourSearch";
+import Reviews from "../../components/Reviews.js";
+import Contacts from "../../components/Contacts.js";
 
 export default function Home() {
   return (
     <>
       <TourSearch />
       {/* <PopularDestinations /> */}
-      <OneTour />
-      <Questions />
+      <div id="tours">
+        <OneTour />
+      </div>
+      <div id="faq">
+        <Questions />
+      </div>
+      <Reviews />
+      <div id="contacts">
+        <Contacts />
+      </div>
     </>
   );
 }

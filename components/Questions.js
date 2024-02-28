@@ -5,7 +5,7 @@ const Container = styled.div`
   background-color: #1a1a1a;
   color: white;
   padding: 3rem 1rem;
-  height: 80vh;
+  height: 100%;
 `;
 
 const Title = styled.h1`
@@ -36,6 +36,7 @@ const FAQList = styled.ul`
 
 const FAQItem = styled.li`
   font-family: "Figtree", sans-serif;
+  font-weight: 200;
   display: flex;
   flex-direction: column;
   border-top: 1px solid #4b5563;
@@ -44,7 +45,7 @@ const FAQItem = styled.li`
 `;
 
 const DropSpan = styled.h4`
-  display: ${({ isVisible }) => (isVisible ? "block" : "none")};
+  display: ${({ $isVisible }) => ($isVisible ? "block" : "none")};
   margin-top: 1rem;
 `;
 
@@ -60,7 +61,6 @@ const Image = styled.img`
   cursor: pointer;
 `;
 
-// Define your questions and answers here
 const faqData = [
   {
     question: "How do I book a trip with your travel agency?",
@@ -120,7 +120,7 @@ export default function Questions() {
                   alt="expand_more"
                   onClick={() => toggleVisibility(index)}
                 />
-                <DropSpan isVisible={visibility[index]}>{faq.answer}</DropSpan>
+                <DropSpan $isVisible={visibility[index]}>{faq.answer}</DropSpan>
               </FAQItem>
             ))}
           </FAQList>

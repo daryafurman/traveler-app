@@ -94,8 +94,8 @@ export default function DetailsPage() {
         <ImageSlider images={tour.photos} />
         <p>{tour.description}</p>
         <p>{Array.isArray(tour.itinarary) ? tour.itinarary.join(", ") : ""}</p>
-        <h4>Duration: {tour.duration}</h4>
-        <h4>Price: {tour.price}$</h4>
+        <h4>Duration: {tour.duration} days</h4>
+        <h4>Price: {tour.price} $</h4>
         <Link href={`/admin/tours/${id}/edit`}>
           <EditButton>Edit tour</EditButton>
         </Link>
