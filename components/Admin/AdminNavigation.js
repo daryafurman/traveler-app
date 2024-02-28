@@ -3,14 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 const MenuContainer = styled.div`
-  margin-top: 100px;
   position: fixed;
   display: flex;
   justify-content: flex-start;
   align-items: start;
   height: 100vh;
   width: 15%;
-  background-color: #eecb75;
+  margin-top: 100px;
+  background-color: #0a1f22;
 
   @media (max-width: 768px) {
     width: 60px;
@@ -35,7 +35,7 @@ const List = styled.ul`
 const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 0.3rem;
-  color: #3f4d34;
+  color: #cbdde9;
   font-weight: bold;
   display: flex;
   align-items: center;

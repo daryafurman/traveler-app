@@ -7,10 +7,10 @@ import AdminNavigation from "../../../../../components/Admin/AdminNavigation";
 const EditTourContainer = styled.div`
   background-color: #cbdde9;
   padding: 20px;
-  margin-top: 100px;
 `;
 
 const Header = styled.h1`
+  padding-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

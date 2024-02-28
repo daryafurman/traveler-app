@@ -23,7 +23,7 @@ const List = styled.ul`
 const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 0.3rem;
-  color: #3f4d34;
+  color: #0a1f22;
   font-weight: bold;
   &:hover {
     border-bottom: 5px dotted var(--primary-color);
@@ -45,7 +45,7 @@ const Navigation = () => {
               Tours
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink href="/destinations" passHref>
               Destinations*
             </NavLink>
@@ -54,7 +54,7 @@ const Navigation = () => {
             <NavLink href="/blog" passHref>
               Blog*
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink href="/contacts" passHref>
               Contacts

@@ -63,7 +63,7 @@ const SearchForm = styled.form`
 
   label {
     margin-bottom: 5px;
-    color: #cbdde9;
+    color: #fff;
     text-align: center;
   }
 `;

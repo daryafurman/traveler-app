@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.div`
   height: 100px;
-  width: 100%;
+  width: 100vw;
   z-index: 10;
   position: fixed;
   display: flex;
@@ -24,7 +24,7 @@ const Logo = styled.h1`
   font-weight: 600;
   font-style: normal;
   font-size: 45px;
-  color: #3f4d34;
+  color: #0a1f22;
   padding-left: 70px;
 `;
 

@@ -8,8 +8,7 @@ const TourContainer = styled.div`
   width: 500px;
   margin-left: 20%;
   margin-bottom: 20px;
-  gap: 30px;
-  padding-top: 100px;
+  margin-top: 110px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -40,7 +39,8 @@ const Button = styled.button`
   font-style: normal;
 `;
 
-const List = styled.ul`
+const List = styled.li`
+  padding-top: 10px;
   list-style-type: none;
   text-align: left;
 `;
