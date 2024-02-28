@@ -7,10 +7,19 @@ import AdminNavigation from "../../../../../components/Admin/AdminNavigation";
 const EditTourContainer = styled.div`
   background-color: #cbdde9;
   padding: 20px;
+  background-color: #cbdde9;
+  padding: 20px;
+  padding-top: 100px; /* Account for the fixed header */
+  height: calc(100vh - 100px); /* Adjust the height to account for the header */
+  margin-left: 250px; /* Adjust based on the width of the AdminNavigation */
+  overflow: auto; /* In case the form is longer than the screen */
+
+  @media (max-width: 768px) {
+    margin-left: 60px; /* Adjust based on the responsive width of the AdminNavigation */
+  }
 `;
 
 const Header = styled.h1`
-  padding-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

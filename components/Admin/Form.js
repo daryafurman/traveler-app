@@ -10,8 +10,6 @@ export const FormContainer = styled.form`
   font-weight: 300;
   font-style: normal;
   color: #3f4d34;
-  height: 100vh;
-  padding-left: 20%;
 `;
 
 export const Input = styled.input`
@@ -81,14 +79,14 @@ export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
     description: "",
     country: "",
     city: "",
-    itinerary: "",
+    itinerary: [""],
     duration: "",
     price: "",
     photos: [""],
   });
 
   useEffect(() => {
-    if (tourId & (defaultData.length === 0)) {
+    if (tourId && defaultData.length === 0) {
       fetchTourData(tourId)
         .then((data) => {
           setFormData({
@@ -163,8 +161,8 @@ export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
       />
       <Label htmlFor="itinerary">Itinerary</Label>
       <Textarea
-        id="itinerary"
-        name="itinerary"
+        id="itinarary"
+        name="itinarary"
         defaultValue={formData.itinerary}
         onChange={handleInputChange}
       />

@@ -20,6 +20,14 @@ const TextContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 30px;
+  max-width: 90%;
+  margin: 30px auto;
+
+  @media (max-width: 768px) {
+    width: auto; // Lets it expand naturally
+    height: auto; // Adjust height as necessary
+    padding: 15px; // Smaller padding
+  }
 `;
 
 const Slider = styled.div`
@@ -45,22 +53,6 @@ const ImageContainer = styled.img`
   height: auto;
   display: block;
 `;
-
-// const Description = styled.p`
-//   height: 100px;
-//   overflow: hidden;
-//   position: relative;
-
-//   ::after {
-//     content: "";
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     height: 20%;
-//     background: linear-gradient(to bottom, transparent, white);
-//   }
-// `;
 
 const Description = styled.p`
   cursor: pointer;

@@ -4,15 +4,28 @@ import React from "react";
 import SearchResults from "../../components/SearchResult/SearchResult";
 import styled from "styled-components";
 
-const Main = styled.div`
-  background-color: #cbdde9;
+const SearchContainer = styled.h2`
   padding-top: 100px;
-  height: 100%;
+  background-color: #cbdde9;
+`;
+
+const Main = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
+  font-style: normal;
+  text-align: center;
+`;
+
+const Title = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0a1f22;
+  font-family: "Italiana", sans-serif;
+  font-weight: 600;
   font-style: normal;
   text-align: center;
 `;
@@ -37,10 +50,10 @@ export default function ShowSearchResults() {
     return <div>No tours found for the selected destination.</div>;
 
   return (
-    <>
-      <h2 style={{ color: "#3f4d34" }}>
+    <SearchContainer>
+      <Title>
         All the tours that we have available to {country}, {city}:
-      </h2>
+      </Title>
       <Main>
         {tours?.map((tour) => (
           <SearchResults
@@ -55,6 +68,6 @@ export default function ShowSearchResults() {
           />
         ))}
       </Main>
-    </>
+    </SearchContainer>
   );
 }

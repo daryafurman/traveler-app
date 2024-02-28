@@ -5,7 +5,7 @@ const Container = styled.div`
   background-color: #1a1a1a;
   color: white;
   padding: 3rem 1rem;
-  height: 100%;
+  min-height: 100vh;
 `;
 
 const Title = styled.h1`
@@ -19,19 +19,34 @@ const Title = styled.h1`
   em {
     color: #fff;
   }
+
+  @media (max-width: 768px) {
+    font-size: 2rem; // Smaller font size on smaller screens
+  }
 `;
 
 const FAQContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap; // Allow items to wrap on smaller screens
+
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack vertically on smaller screens
+    align-items: center; // Center items when stacked
+  }
 `;
 
 const FAQList = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 1.3rem;
-  width: 900px;
+  width: 100%; // Adjust based on screen size
+  max-width: 900px; // Limit the max width
+
+  @media (max-width: 768px) {
+    width: 90%; // Take up more width on smaller screens
+  }
 `;
 
 const FAQItem = styled.li`
@@ -42,6 +57,10 @@ const FAQItem = styled.li`
   border-top: 1px solid #4b5563;
   padding-top: 1rem;
   font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 18px; // Slightly smaller font on smaller screens
+  }
 `;
 
 const DropSpan = styled.h4`
@@ -59,6 +78,8 @@ const ImagesContainer = styled.div`
 const Image = styled.img`
   margin-bottom: 1rem;
   cursor: pointer;
+  width: 40vw;
+  border-radius: 50px;
 `;
 
 const faqData = [
@@ -128,8 +149,6 @@ export default function Questions() {
             <Image
               src="https://images.unsplash.com/photo-1505832018823-50331d70d237?q=80&w=1816&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="traintohagwards"
-              width={700}
-              height={500}
             />
           </ImagesContainer>
         </FAQContainer>

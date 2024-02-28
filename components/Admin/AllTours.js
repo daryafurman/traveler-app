@@ -3,13 +3,13 @@ import ImageSlider from "../SearchResult/ImageSlider";
 import { useRouter } from "next/router";
 
 const TourContainer = styled.div`
-  color: #3f4d34;
+  color: #cbdde9;
   padding: 30px;
   width: 500px;
   margin-left: 20%;
   margin-bottom: 20px;
   margin-top: 110px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #0a1f22;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(16.4px);
@@ -17,6 +17,7 @@ const TourContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 90%;
+    margin-top: 110px;
     padding: 15px;
   }
 `;

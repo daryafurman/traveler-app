@@ -7,20 +7,27 @@ import Link from "next/link";
 
 const Tour = styled.div`
   background-color: #cbdde9;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const Article = styled.article`
-  padding-top: 100px;
-  padding-left: 20%;
-  width: 700px;
-
+  padding-top: 100px; /* Account for fixed header if any */
+  padding-left: 20%; /* Adjust based on the sidebar's width */
+  width: auto; /* Make width flexible */
+  max-width: 700px; /* Maximum width to maintain readability */
+  margin-left: auto; /* Center the article when there's space */
+  margin-right: auto; /* Center the article when there's space */
   color: #3f4d34;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
   text-align: left;
-  height: 100%;
+  padding-bottom: 20px;
+
+  @media (max-width: 768px) {
+    padding-left: 16%; /* Reduce padding for smaller screens */
+    padding-right: 10%; /* Ensure padding on the right for consistency */
+  }
 `;
 
 const EditButton = styled.button`
@@ -93,7 +100,11 @@ export default function DetailsPage() {
         </h2>
         <ImageSlider images={tour.photos} />
         <p>{tour.description}</p>
-        <p>{Array.isArray(tour.itinarary) ? tour.itinarary.join(", ") : ""}</p>
+        <p>
+          {Array.isArray(tour.itinarary)
+            ? tour.itinarary.join("--------------")
+            : ""}
+        </p>
         <h4>Duration: {tour.duration} days</h4>
         <h4>Price: {tour.price} $</h4>
         <Link href={`/admin/tours/${id}/edit`}>

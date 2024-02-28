@@ -11,14 +11,22 @@ const Main = styled.div`
   font-weight: 300;
   font-style: normal;
   text-align: left;
+  min-height: 100vh;
 `;
 
 const Article = styled.article`
   display: flex;
-  padding-top: 100px;
+  flex-direction: column; // Change direction on small screens
+  padding-top: 20px; // Adjusted padding
   margin: auto;
   color: #0a1f22;
-  align-items: flex-start;
+  align-items: center; // Center items for better responsiveness
+
+  @media (min-width: 768px) {
+    flex-direction: row; // Use row layout on larger screens
+    padding-top: 100px;
+    align-items: flex-start; // Align items at the start on larger screens
+  }
 `;
 
 const Button = styled.button`
@@ -27,8 +35,8 @@ const Button = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #3f4d34;
-  color: #fff;
+  background-color: orange;
+  color: black;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -49,8 +57,9 @@ const Text = styled.div`
   padding: 40px 40px 40px 40px;
 `;
 
-const ItineraryText = styled.h5`
+const ItineraryText = styled.p`
   cursor: pointer;
+  padding: 40px;
 `;
 
 export default function DetailsPage() {
@@ -105,10 +114,10 @@ export default function DetailsPage() {
   const toggleItinararyText = () => setShowFullItinarary(!showFullItinarary);
 
   const truncateItinarary = (itinararyArray) => {
-    const fullText = itinararyArray.join(", ");
+    const fullText = itinararyArray.join("\n");
     if (showFullItinarary) return fullText;
     const truncateAt = Math.floor(fullText.length * 0.2);
-    return fullText.slice(0, truncateAt) + "...";
+    return fullText.slice(0, truncateAt) + "Click to read the full schedule...";
   };
 
   return (
@@ -120,16 +129,9 @@ export default function DetailsPage() {
           </h2>
           <ImageSlider images={tour.photos} />
         </DestandImgSlider>
-
         <Text>
-          <p>{tour.description}</p>
-          <ItineraryText onClick={toggleItinararyText}>
-            Programm of the Tour:{" "}
-            {Array.isArray(tour.itinarary)
-              ? truncateItinarary(tour.itinarary)
-              : ""}
-            <p>(Click to read the full schedule)</p>
-          </ItineraryText>
+          <h3>{tour.description}</h3>
+
           <h4>Duration: {tour.duration}</h4>
           <h4>Price: {tour.price}$</h4>
           <Button onClick={openModal}>Book Now</Button>
@@ -140,6 +142,10 @@ export default function DetailsPage() {
           />
         </Text>
       </Article>
+      <ItineraryText onClick={toggleItinararyText}>
+        Programm of the Tour:{" "}
+        {Array.isArray(tour.itinarary) ? truncateItinarary(tour.itinarary) : ""}
+      </ItineraryText>
     </Main>
   );
 }
