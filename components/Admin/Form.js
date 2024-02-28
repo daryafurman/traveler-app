@@ -74,7 +74,7 @@ const PhotoInput = ({ id, value, onChange }) => (
   </div>
 );
 
-export default function TourForm({ onSubmit, formName, defaultValue, tourId }) {
+export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
   const [formData, setFormData] = useState({
     name: "",
     location: "",
@@ -88,7 +88,7 @@ export default function TourForm({ onSubmit, formName, defaultValue, tourId }) {
   });
 
   useEffect(() => {
-    if (tourId) {
+    if (tourId & (defaultData.length === 0)) {
       fetchTourData(tourId)
         .then((data) => {
           setFormData({
@@ -99,6 +99,8 @@ export default function TourForm({ onSubmit, formName, defaultValue, tourId }) {
         .catch((error) => {
           console.error("Failed to fetch tour data:", error);
         });
+    } else {
+      setFormData(defaultData);
     }
   }, [tourId]);
 
@@ -167,7 +169,7 @@ export default function TourForm({ onSubmit, formName, defaultValue, tourId }) {
         onChange={handleInputChange}
       />
       <Label htmlFor="duration">Duration (days)</Label>
-      <Input
+      <Textarea
         id="duration"
         name="duration"
         type="number"

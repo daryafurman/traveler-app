@@ -7,19 +7,20 @@ import Link from "next/link";
 
 const Tour = styled.div`
   background-color: #cbdde9;
-  margin-top: 100px;
-  height: 100hv;
+  height: 100vh;
 `;
 
 const Article = styled.article`
-  padding: 20px;
+  padding-top: 100px;
+  padding-left: 20%;
   width: 700px;
-  margin: 40px auto;
+
   color: #3f4d34;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
   text-align: left;
+  height: 100%;
 `;
 
 const EditButton = styled.button`
@@ -93,8 +94,8 @@ export default function DetailsPage() {
         <ImageSlider images={tour.photos} />
         <p>{tour.description}</p>
         <p>{Array.isArray(tour.itinarary) ? tour.itinarary.join(", ") : ""}</p>
-        <h4>Duration: {tour.duration}</h4>
-        <h4>Price: {tour.price}$</h4>
+        <h4>Duration: {tour.duration} days</h4>
+        <h4>Price: {tour.price} $</h4>
         <Link href={`/admin/tours/${id}/edit`}>
           <EditButton>Edit tour</EditButton>
         </Link>

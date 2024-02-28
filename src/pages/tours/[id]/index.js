@@ -7,7 +7,6 @@ import Modal from "../../../../components/Modal";
 
 const Main = styled.div`
   background-color: #cbdde9;
-  height: 100%;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -15,10 +14,11 @@ const Main = styled.div`
 `;
 
 const Article = styled.article`
-  padding: 20px;
-  width: 1000px;
-  margin: 40px auto;
+  display: flex;
+  padding-top: 100px;
+  margin: auto;
   color: #0a1f22;
+  align-items: flex-start;
 `;
 
 const Button = styled.button`
@@ -38,8 +38,24 @@ const Button = styled.button`
   font-weight: 400;
   font-style: normal;
 `;
+
+const DestandImgSlider = styled.div`
+  padding: 0px 40px 0px 40px;
+  width: 35%;
+`;
+
+const Text = styled.div`
+  width: 65%;
+  padding: 40px 40px 40px 40px;
+`;
+
+const ItineraryText = styled.h5`
+  cursor: pointer;
+`;
+
 export default function DetailsPage() {
   const [modalShow, setModalShow] = useState(false);
+  const [showFullItinarary, setShowFullItinarary] = useState(false); // State to toggle itinerary text
 
   const openModal = () => setModalShow(true);
   const closeModal = () => setModalShow(false);
@@ -76,7 +92,7 @@ export default function DetailsPage() {
   const { isReady } = router;
   const { id } = router.query;
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, error } = useSWR(id ? `/api/tours/${id}` : null, fetcher);
+  const { data, error } = useSWR(isReady ? `/api/tours/${id}` : null, fetcher);
 
   const isLoading = !data && !error;
 
@@ -86,23 +102,43 @@ export default function DetailsPage() {
 
   const tour = data.tour;
 
+  const toggleItinararyText = () => setShowFullItinarary(!showFullItinarary);
+
+  const truncateItinarary = (itinararyArray) => {
+    const fullText = itinararyArray.join(", ");
+    if (showFullItinarary) return fullText;
+    const truncateAt = Math.floor(fullText.length * 0.2);
+    return fullText.slice(0, truncateAt) + "...";
+  };
+
   return (
     <Main>
       <Article>
-        <h2>
-          {tour.country}, {tour.city}
-        </h2>
-        <ImageSlider images={tour.photos} />
-        <p>{tour.description}</p>
-        <p>{Array.isArray(tour.itinarary) ? tour.itinarary.join(" , ") : ""}</p>
-        <h4>Duration: {tour.duration}</h4>
-        <h4>Price: {tour.price}$</h4>
-        <Button onClick={openModal}>Book Now</Button>
-        <Modal
-          show={modalShow}
-          onClose={closeModal}
-          onSubmit={handleModalSubmit}
-        />
+        <DestandImgSlider>
+          <h2>
+            {tour.country}, {tour.city}
+          </h2>
+          <ImageSlider images={tour.photos} />
+        </DestandImgSlider>
+
+        <Text>
+          <p>{tour.description}</p>
+          <ItineraryText onClick={toggleItinararyText}>
+            Programm of the Tour:{" "}
+            {Array.isArray(tour.itinarary)
+              ? truncateItinarary(tour.itinarary)
+              : ""}
+            <p>(Click to read the full schedule)</p>
+          </ItineraryText>
+          <h4>Duration: {tour.duration}</h4>
+          <h4>Price: {tour.price}$</h4>
+          <Button onClick={openModal}>Book Now</Button>
+          <Modal
+            show={modalShow}
+            onClose={closeModal}
+            onSubmit={handleModalSubmit}
+          />
+        </Text>
       </Article>
     </Main>
   );
