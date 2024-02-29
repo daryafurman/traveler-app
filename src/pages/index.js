@@ -4,7 +4,7 @@ import Questions from "../../components/Questions.js";
 import OneTour from "../../components/Tours/OneTour.js";
 import TourSearch from "../../components/TourSearch/TourSearch";
 import Reviews from "../../components/Reviews.js";
-import Contacts from "../../components/Contacts.js";
+import Footer from "../../components/Footer.js";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       </div>
       <Reviews />
       <div id="contacts">
-        <Contacts />
+        <Footer />
       </div>
     </>
   );
