@@ -105,9 +105,6 @@ export default function Header() {
             <li>
               <NavLink href="#faq">FAQ</NavLink>
             </li>
-            <li>
-              <NavLink href="#contacts">Contacts</NavLink>
-            </li>
           </List>
         </nav>
       </MenuContainer>

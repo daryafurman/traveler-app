@@ -66,13 +66,13 @@ const AdminNavigation = () => {
       <nav>
         <List role="list">
           <li>
-            <NavLink href="/admin" passHref>
+            <NavLink href="/admin" $isActive={true} passHref>
               <Image src="/home.svg" width={35} height={35} alt="home-icon" />
               <NavLinkText>Admin panel</NavLinkText>
             </NavLink>
           </li>
           <li>
-            <NavLink href="/admin" $isActive={true} passHref>
+            <NavLink href="/admin" passHref>
               <Image
                 src="/travel_explore.svg"
                 width={35}
