@@ -66,13 +66,13 @@ export default function Tours({
   description,
   duration,
 }) {
-  const [showFullDescription, setShowFullDescription] = useState(false); // State to toggle description
+  const [showFullDescription, setShowFullDescription] = useState(false);
   const toggleDescription = () => setShowFullDescription(!showFullDescription);
 
   // Function to truncate description
   const truncateDescription = (text) => {
     if (showFullDescription || !text) return text;
-    return text.length > 100 ? text.slice(0, 100) + "..." : text; // Adjust 100 to your preference
+    return text.length > 100 ? text.slice(0, 100) + "..." : text;
   };
   return (
     <div>
