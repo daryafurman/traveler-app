@@ -30,7 +30,7 @@ const Button = styled.button`
   padding-top: 20px;
   margin: auto;
   gap: 10px;
-  width: 490px;
+  width: 300px;
   padding: 10px;
   border-radius: 40px;
   background-color: orange;

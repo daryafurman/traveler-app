@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const Main = styled.div`
   height: 100vh;
-  padding-left: 20%;
+  padding-left: 270px;
 `;
 
 const Table = styled.table`
