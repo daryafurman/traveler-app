@@ -45,7 +45,7 @@ const SlidesWrapper = styled.div`
 
 const ImageContainer = styled.div`
   flex: 0 0 100%;
-  height: 100%; // Consider setting a specific height or using aspect ratio boxes
+  height: 80%;
 `;
 
 const ImageSlider = ({ images }) => {

@@ -23,13 +23,18 @@ const TourContainer = styled.div`
 `;
 
 const Button = styled.button`
-  align-self: center;
+  align-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: auto;
   gap: 10px;
-  width: 100px;
+  width: 490px;
   padding: 10px;
-  border-radius: 60px;
-  background-color: #eecb75;
-  color: #3f4d34;
+  border-radius: 40px;
+  background-color: orange;
+  color: black;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -39,7 +44,6 @@ const Button = styled.button`
   font-weight: 400;
   font-style: normal;
 `;
-
 const List = styled.li`
   padding-top: 10px;
   list-style-type: none;
@@ -59,7 +63,7 @@ export default function AllTours({ tours }) {
         <List>
           <li>Description: {description}</li>
           <br />
-          <li>Duration: {duration}</li>
+          <li>Duration: {duration} days</li>
           <li>Price: {price} $</li>
         </List>
         <Button onClick={() => router.push(`/admin/tours/${_id}`)}>

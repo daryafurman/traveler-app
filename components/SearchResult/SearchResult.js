@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 
 const SearchContainer = styled.div`
   color: #cbdde9;
-  padding: 20px; // Slightly reduced from 30px for smaller screens
+  padding: 20px;
   width: 90vw;
-  max-width: 600px;
+  max-width: 500px;
   margin: 20px auto;
   justify-content: space-between;
   background: #0a1f22;
@@ -18,29 +18,36 @@ const SearchContainer = styled.div`
   flex-direction: column;
 
   @media (max-width: 768px) {
-    padding: 15px; // Further reduce padding for very small screens
-    border-radius: 10px; // Optionally reduce border radius for smaller screens
+    padding: 15px;
+    border-radius: 10px;
   }
 `;
 
 const Button = styled.button`
-  align-self: center;
-  width: auto; // Adjusted from fixed width to auto
+  align-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: auto;
+  gap: 10px;
+  width: 20vw;
   padding: 10px;
   border-radius: 60px;
-  background-color: #cbdde9;
-  color: #3f4d34;
+  background-color: orange;
+  color: black;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 
   @media (max-width: 768px) {
-    width: 100%; // Full width for smaller screens
-    border-radius: 30px; // Adjusted for aesthetic purposes on smaller screens
+    width: 100%;
+    border-radius: 30px;
   }
 `;
 

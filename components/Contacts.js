@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const ContactsContainer = styled.div`
-  height: 100vh;
-  background-color: #3f4d34;
+  height: 250px;
+  background-color: #0a1f22;
 `;
 
 export default function Contscts() {
