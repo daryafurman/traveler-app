@@ -17,7 +17,6 @@ const Article = styled.article`
   max-width: 700px; /* Maximum width to maintain readability */
   margin-left: auto; /* Center the article when there's space */
   margin-right: auto; /* Center the article when there's space */
-  color: #3f4d34;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -31,37 +30,49 @@ const Article = styled.article`
 `;
 
 const EditButton = styled.button`
-  align-self: center;
+  align-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: 10px;
   gap: 10px;
   width: 100px;
   padding: 10px;
-  margin-right: 20px;
   border-radius: 60px;
-  background-color: #3f4d34;
-  color: #f5bda8;
+  background-color: orange;
+  color: black;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-family: "Figtree", sans-serif;
-  text-align: center;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 `;
 
 const DeleteButton = styled.button`
-  align-self: center;
+  align-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: 10px;
   gap: 10px;
   width: 100px;
   padding: 10px;
-  margin-right: 20px;
   border-radius: 60px;
-  background-color: #f5bda8;
-  color: #3f4d34;
+  background-color: red;
+  color: white;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-family: "Figtree", sans-serif;
-  text-align: center;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 `;
 
 export default function DetailsPage() {
@@ -102,7 +113,9 @@ export default function DetailsPage() {
         <p>{tour.description}</p>
         <p>
           {Array.isArray(tour.itinarary)
-            ? tour.itinarary.join("--------------")
+            ? tour.itinarary.join(
+                "__________________________________________________________________"
+              )
             : ""}
         </p>
         <h4>Duration: {tour.duration} days</h4>

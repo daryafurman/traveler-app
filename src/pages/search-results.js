@@ -4,8 +4,9 @@ import React from "react";
 import SearchResults from "../../components/SearchResult/SearchResult";
 import styled from "styled-components";
 
-const SearchContainer = styled.h2`
+const SearchContainer = styled.div`
   padding-top: 100px;
+  height: 100%;
   background-color: #cbdde9;
 `;
 

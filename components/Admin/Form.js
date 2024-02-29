@@ -26,13 +26,18 @@ export const Label = styled.label`
 `;
 
 const Button = styled.button`
-  align-self: center;
+  align-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: auto;
   gap: 10px;
-  width: 100px;
+  width: 30vw;
   padding: 10px;
   border-radius: 60px;
-  background-color: #3f4d34;
-  color: #f5bda8;
+  background-color: orange;
+  color: black;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -49,8 +54,8 @@ const AddPhotoButton = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #f5bda8;
-  color: #3f4d34;
+  background-color: #0a1f22;
+  color: #fff;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -195,7 +200,7 @@ export default function TourForm({ onSubmit, formName, defaultData, tourId }) {
       <AddPhotoButton type="button" onClick={addPhotoField}>
         Add Photo
       </AddPhotoButton>
-      <Button type="submit">{formName}</Button>
+      <Button type="submit">Save changes</Button>
     </FormContainer>
   );
 }

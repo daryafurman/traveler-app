@@ -11,8 +11,9 @@ const ReviewsContainer = styled.div`
   background-position: center;
   min-height: 100vh;
   display: flex;
+  flex-direction: column; // Adjusted to align items vertically
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; // Adjusted to start from top
   padding: 4rem 1rem;
 
   @media (max-width: 768px) {
@@ -25,9 +26,8 @@ const Title = styled.h1`
   font-size: 3rem;
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin: 0 0 2rem 0; // Adjust margin to push the content a bit down
   text-align: center;
-  transform: rotate(-90deg);
   color: #0a1f22;
 
   @media (max-width: 768px) {
@@ -38,14 +38,17 @@ const Title = styled.h1`
     color: #fff;
   }
 `;
+
 const ReviewContent = styled.div`
   background-color: rgba(255, 255, 255, 0.7);
   display: flex;
-  flex-direction: row; // Change direction to column for better mobile layout
+  flex-direction: column; // Keep it column to maintain the vertical layout of text
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Optional: adds a subtle shadow for depth
-  margin: 0 1rem; // Ensure it doesn't touch the sides on small screens
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem; // Add some spacing between each review
+  width: 80%; // Control the width for better readability
+  max-width: 800px; // Prevent it from becoming too wide on large screens
 
   @media (min-width: 769px) {
     flex-direction: row; // Use row layout for larger screens
@@ -58,11 +61,7 @@ const Blockquote = styled.blockquote`
   font-style: italic;
   text-align: center;
   font-family: "Figtree", sans-serif;
-  margin: 1rem 0; // Add margin for spacing between reviews on small screens
-
-  @media (max-width: 768px) {
-    font-size: 1rem; // Adjust font size for smaller screens
-  }
+  margin: 1rem 0;
 `;
 
 const ReviewFooter = styled.footer`

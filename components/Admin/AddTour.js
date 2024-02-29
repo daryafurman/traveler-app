@@ -28,13 +28,18 @@ export const Label = styled.label`
 `;
 
 const Button = styled.button`
-  align-self: center;
+  align-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: auto;
   gap: 10px;
-  width: 100px;
+  width: 300px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #3f4d34;
-  color: #f5bda8;
+  background-color: orange;
+  color: black;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;
@@ -51,8 +56,8 @@ const AddPhotoButton = styled.button`
   width: 100px;
   padding: 10px;
   border-radius: 60px;
-  background-color: #beee62;
-  color: #f4743b;
+  background-color: #0a1f22;
+  color: orange;
   border: none;
   letter-spacing: 0.4px;
   cursor: pointer;

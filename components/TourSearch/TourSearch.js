@@ -52,6 +52,13 @@ const Button = styled.button`
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  width: auto; /* Adjusted for flexibility */
+  min-width: 100px; /* Ensure it doesn't get too small */
+  padding: 10px 20px; /* Adjust padding for better visual */
+
+  @media (max-width: 768px) {
+    padding: 8px 16px; /* Slightly smaller padding on small screens */
+  }
 `;
 
 const SearchForm = styled.form`
@@ -68,7 +75,8 @@ const SearchForm = styled.form`
   flex-direction: column;
 
   @media (max-width: 768px) {
-    margin-top: 10px; // Less margin on top for smaller devices
+    padding: 10px;
+    margin-top: 10px;
   }
 `;
 
@@ -87,6 +95,16 @@ const Row = styled.div`
     border-radius: 8px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow */
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack inputs vertically on small screens */
+    align-items: stretch; /* Stretch inputs to full width */
+    gap: 10px; /* Reduce gap for a compact layout */
+    input,
+    select {
+      width: auto; /* Adjust input width to auto for full width */
+    }
   }
 `;
 

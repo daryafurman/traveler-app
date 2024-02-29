@@ -11,28 +11,48 @@ const Main = styled.div`
   font-weight: 300;
   font-style: normal;
   text-align: left;
-  min-height: 100vh;
 `;
 
 const Article = styled.article`
   display: flex;
-  flex-direction: column; // Change direction on small screens
-  padding-top: 20px; // Adjusted padding
+  flex-direction: column;
+  padding-top: 20px;
   margin: auto;
   color: #0a1f22;
-  align-items: center; // Center items for better responsiveness
+  align-items: center;
+  position: relative;
+  width: 70vw;
 
   @media (min-width: 768px) {
-    flex-direction: row; // Use row layout on larger screens
+    flex-direction: row;
     padding-top: 100px;
-    align-items: flex-start; // Align items at the start on larger screens
+    align-items: flex-start;
+  }
+
+  > * {
+    // This will position all direct children except the first (ImageSlider) absolutely
+    position: absolute;
+    z-index: 2; // Ensures text layers over the slider
+  }
+
+  > :first-child {
+    // This targets the ImageSlider specifically
+    position: relative; // Adjust as needed based on your ImageSlider's styles
+    width: 100%;
+    z-index: 1; // Ensures the slider is behind the text
   }
 `;
 
 const Button = styled.button`
-  align-self: center;
+  align-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: 20px auto;
+  margin-bottom: 20px;
   gap: 10px;
-  width: 100px;
+  width: 30vw;
   padding: 10px;
   border-radius: 60px;
   background-color: orange;
@@ -47,19 +67,71 @@ const Button = styled.button`
   font-style: normal;
 `;
 
-const DestandImgSlider = styled.div`
-  padding: 0px 40px 0px 40px;
-  width: 35%;
-`;
-
-const Text = styled.div`
-  width: 65%;
-  padding: 40px 40px 40px 40px;
-`;
-
 const ItineraryText = styled.p`
+  font-size: 20px;
   cursor: pointer;
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: auto;
+  width: 70vw;
+`;
+
+const Duration = styled.p`
+  font-size: 26px;
+  padding-top: 7%;
+  padding-left: 12%;
+  color: #fff;
+`;
+
+const Country = styled.p`
+  font-size: 80px;
+  font-family: "Italiana", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: orange;
+  margin: 0 20px;
+  padding-top: 10%;
+  padding-left: 5%;
+`;
+
+const City = styled.p`
+  font-size: 65px;
+  font-family: "Italiana", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: orange;
+  margin: 0 20px;
+  padding-top: 15%;
+  padding-left: 10%;
+`;
+
+const Price = styled.p`
+  font-size: 20px;
+  margin-top: 20%;
+  margin-left: 7%;
+  color: #fff;
+  border-radius: 50px;
+  padding: 15px;
+  background: rgba(255, 165, 0, 0.6);
+`;
+
+const Descripton = styled.p`
+  width: auto;
+  width: 570px;
+  margin: 25% 10% 25% 50%;
+  color: white;
+  font-size: 22px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16.4px);
+  -webkit-backdrop-filter: blur(16.4px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export default function DetailsPage() {
@@ -117,35 +189,29 @@ export default function DetailsPage() {
     const fullText = itinararyArray.join("\n");
     if (showFullItinarary) return fullText;
     const truncateAt = Math.floor(fullText.length * 0.2);
-    return fullText.slice(0, truncateAt) + "Click to read the full schedule...";
+    return fullText.slice(0, truncateAt) + " >>> click to see more >>>";
   };
 
   return (
     <Main>
       <Article>
-        <DestandImgSlider>
-          <h2>
-            {tour.country}, {tour.city}
-          </h2>
-          <ImageSlider images={tour.photos} />
-        </DestandImgSlider>
-        <Text>
-          <h3>{tour.description}</h3>
-
-          <h4>Duration: {tour.duration}</h4>
-          <h4>Price: {tour.price}$</h4>
-          <Button onClick={openModal}>Book Now</Button>
-          <Modal
-            show={modalShow}
-            onClose={closeModal}
-            onSubmit={handleModalSubmit}
-          />
-        </Text>
+        <ImageSlider images={tour.photos} />
+        <Duration>{tour.duration} days in </Duration>
+        <Country>{tour.country}</Country>
+        <City>{tour.city}</City>
+        <Descripton>{tour.description}</Descripton>
+        <Price>only for {tour.price}$</Price>
       </Article>
       <ItineraryText onClick={toggleItinararyText}>
         Programm of the Tour:{" "}
         {Array.isArray(tour.itinarary) ? truncateItinarary(tour.itinarary) : ""}
       </ItineraryText>
+      <Button onClick={openModal}>Book Now</Button>
+      <Modal
+        show={modalShow}
+        onClose={closeModal}
+        onSubmit={handleModalSubmit}
+      />
     </Main>
   );
 }
