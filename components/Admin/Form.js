@@ -14,11 +14,13 @@ export const FormContainer = styled.form`
 
 export const Input = styled.input`
   padding: 0.5rem;
+  width: 70%;
 `;
 
 export const Textarea = styled.textarea`
   font-family: "Figtree", sans-serif;
   padding: 0.5rem;
+  width: 70%;
 `;
 
 export const Label = styled.label`

@@ -110,7 +110,9 @@ export default function DetailsPage() {
           {tour.country}, {tour.city}
         </h2>
         <ImageSlider images={tour.photos} />
+
         <p>{tour.description}</p>
+        <h4>Programm of the tour:</h4>
         <p>
           {Array.isArray(tour.itinarary)
             ? tour.itinarary.join(

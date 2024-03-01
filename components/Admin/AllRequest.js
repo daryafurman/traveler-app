@@ -8,7 +8,7 @@ const Main = styled.div`
 `;
 
 const Table = styled.table`
-  width: 70%;
+  width: 50%;
   border-collapse: collapse;
   font-family: "Figtree", sans-serif;
 `;
