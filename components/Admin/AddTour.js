@@ -16,11 +16,13 @@ export const FormContainer = styled.form`
 
 export const Input = styled.input`
   padding: 0.5rem;
+  width: 70%;
 `;
 
 export const Textarea = styled.textarea`
   font-family: "Figtree", sans-serif;
   padding: 0.5rem;
+  width: 70%;
 `;
 
 export const Label = styled.label`
@@ -165,8 +167,8 @@ export default function AddTour({ onSubmit }) {
       />
       <Label htmlFor="itinerary">Itinerary</Label>
       <Textarea
-        id="itinerary"
-        name="itinerary"
+        id="itinarary"
+        name="itinarary"
         defaultValue={formData.itinerary}
         onChange={handleInputChange}
       />

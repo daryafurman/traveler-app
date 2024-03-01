@@ -121,10 +121,10 @@ const Descripton = styled.p`
   width: auto;
   width: 570px;
   margin: 25% 10% 25% 50%;
-  color: white;
+  color: black;
   font-size: 22px;
   padding: 15px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(16.4px);
@@ -203,7 +203,7 @@ export default function DetailsPage() {
         <Price>only for {tour.price}$</Price>
       </Article>
       <ItineraryText onClick={toggleItinararyText}>
-        Programm of the Tour:{" "}
+        <h2>Programm of the Tour:</h2>{" "}
         {Array.isArray(tour.itinarary) ? truncateItinarary(tour.itinarary) : ""}
       </ItineraryText>
       <Button onClick={openModal}>Book Now</Button>
